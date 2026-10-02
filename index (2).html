@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>كلمات إيطالية</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Readex+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #eef1f4;
+            --surface: #ffffff;
+            --ink: #16202e;
+            --muted: #5d6b7c;
+            --line: #d9dfe6;
+            --accent: #1d6f54;
+            --accent-soft: #e2f1ea;
+            --focus: #2456d6;
+            --on-accent: #ffffff;
+            --serif: "Newsreader", Georgia, "Times New Roman", serif;
+            --sans: "Readex Pro", "Segoe UI", Tahoma, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #10161e;
+                --surface: #19212c;
+                --ink: #e8edf3;
+                --muted: #93a1b3;
+                --line: #2a3542;
+                --accent: #55c49b;
+                --accent-soft: #163a2e;
+                --focus: #7ea2ff;
+                --on-accent: #0c1712;
+            }
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-padding-top: 150px; }
+
+        body {
+            margin: 0;
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        .wrap {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 16px 48px;
+        }
+
+        .top {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--bg);
+            padding: 20px 0 12px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .top h1 {
+            margin: 0 0 12px;
+            font-size: 1.35rem;
+            font-weight: 600;
+        }
+
+        .search {
+            width: 100%;
+            padding: 11px 14px;
+            font: inherit;
+            color: var(--ink);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .search::placeholder { color: var(--muted); }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tab {
+            font: inherit;
+            font-size: .9rem;
+            color: var(--muted);
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 5px 14px;
+            cursor: pointer;
+        }
+
+        .tab[aria-pressed="true"] {
+            color: var(--surface);
+            background: var(--ink);
+            border-color: var(--ink);
+        }
+
+        .group-title {
+            margin: 26px 0 8px;
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--accent);
+            direction: ltr;
+            text-align: right;
+        }
+
+        .card {
+            display: flex;
+            align-items: flex-start;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            margin-bottom: 6px;
+        }
+
+        .card[hidden] { display: none !important; }
+
+        .reveal {
+            flex: 1;
+            min-width: 0;
+            font: inherit;
+            color: inherit;
+            text-align: start;
+            background: none;
+            border: 0;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .word-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            direction: ltr;
+        }
+
+        .word-main { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+        .pos {
+            font-family: var(--sans);
+            font-size: .72rem;
+            font-weight: 500;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 1px 9px;
+            white-space: nowrap;
+        }
+        .pos.verb { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+        .conj { display: block; margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--line); }
+        .conj-title { display: block; color: var(--muted); font-size: .85rem; margin-bottom: 6px; }
+        .conj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; direction: ltr; }
+        .conj-cell { display: block; background: var(--bg); border-radius: 8px; padding: 6px 10px; text-align: left; }
+        .conj-cell small { display: block; color: var(--muted); font-size: .72rem; }
+        .conj-cell b { font-family: var(--serif); font-size: 1.02rem; font-weight: 500; }
+
+        .word {
+            direction: ltr;
+            text-align: right;
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .meaning {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows .2s ease;
+        }
+
+        .meaning > span {
+            overflow: hidden;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .ex, .ex-tr { display: block; }
+        .ex {
+            direction: ltr;
+            text-align: right;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--line);
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ex-tr { color: var(--muted); font-weight: 400; font-size: .92rem; }
+
+        .card.open .meaning { grid-template-rows: 1fr; }
+        .card.open .meaning > span { padding-top: 4px; }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 8px;
+        }
+
+        .btn-icon, .save {
+            font: inherit;
+            font-size: .85rem;
+            color: var(--muted);
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 6px 10px;
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-icon:hover, .save:hover { border-color: var(--accent); color: var(--accent); }
+
+        .save[aria-pressed="true"] {
+            color: var(--accent);
+            background: var(--accent-soft);
+            border-color: var(--accent);
+        }
+
+        .empty {
+            text-align: center;
+            color: var(--muted);
+            padding: 48px 0;
+        }
+
+        [hidden] { display: none !important; }
+
+        .quiz-start {
+            margin-inline-start: auto;
+            font: inherit;
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--on-accent);
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            padding: 5px 16px;
+            cursor: pointer;
+        }
+
+        .quiz { padding-top: 22px; }
+
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--muted);
+            font-size: .9rem;
+            margin-bottom: 8px;
+        }
+
+        .quiz-exit {
+            font: inherit;
+            font-size: .85rem;
+            color: var(--muted);
+            background: none;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 3px 10px;
+            cursor: pointer;
+        }
+
+        .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+        .bar > i { display: block; height: 100%; background: var(--accent); transition: width .25s ease; }
+
+        .q-word-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 34px 0 4px;
+        }
+
+        .q-word {
+            direction: ltr;
+            text-align: center;
+            font-family: var(--serif);
+            font-size: 2.6rem;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .q-hint { text-align: center; color: var(--muted); margin: 0 0 22px; }
+
+        .options { display: grid; gap: 10px; }
+
+        .opt {
+            font: inherit;
+            font-size: 1.05rem;
+            color: var(--ink);
+            text-align: start;
+            background: var(--surface);
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+        }
+
+        .opt:hover:not(:disabled) { border-color: var(--accent); }
+        .opt:disabled { cursor: default; }
+
+        .opt.right {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .opt.wrong {
+            background: #fbe4e4;
+            border-color: #c23b3b;
+            color: #9b2222;
+        }
+
+        .feedback { min-height: 1.6em; margin: 14px 0 0; font-weight: 500; text-align: center; }
+
+        .btn-primary, .btn-ghost {
+            font: inherit;
+            font-weight: 500;
+            border-radius: 10px;
+            padding: 11px 20px;
+            cursor: pointer;
+        }
+
+        .btn-primary { background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); }
+        .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+
+        .next-row { display: flex; justify-content: center; margin-top: 10px; }
+
+        .result { text-align: center; padding-top: 18px; }
+        .score-big { font-family: var(--serif); font-size: 4rem; font-weight: 600; line-height: 1.1; margin: 10px 0 0; }
+        .score-sub { color: var(--muted); margin: 4px 0 6px; }
+        .score-msg { font-weight: 600; color: var(--accent); margin: 0 0 22px; }
+        .result-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 26px; }
+
+        .mistakes { text-align: start; }
+        .mistakes h3 { font-size: 1rem; margin: 0 0 8px; }
+        .mistake {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 6px;
+        }
+        .mistake .w { direction: ltr; text-align: right; font-family: var(--serif); font-size: 1.15rem; font-weight: 600; }
+        .mistake .ok { color: var(--accent); }
+        .mistake .no { color: #c23b3b; text-decoration: line-through; }
+
+        .modes { display: flex; gap: 6px; margin-bottom: 10px; }
+        .mode { flex: 1; font: inherit; font-weight: 500; color: var(--muted); background: var(--surface);
+                border: 1px solid var(--line); border-radius: 10px; padding: 8px; cursor: pointer; }
+        .mode[aria-pressed="true"] { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+
+        .fpanel { margin-top: 10px; background: var(--surface); border: 1px solid var(--line);
+                  border-radius: 10px; padding: 10px 12px; max-height: 42vh; overflow: auto; }
+        .fl { display: block; color: var(--muted); font-size: .8rem; margin: 8px 0 4px; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { font: inherit; font-size: .85rem; color: var(--ink); background: transparent;
+                border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; }
+        .chip[aria-pressed="true"] { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+        .chip.off { opacity: .45; }
+        .frow { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; color: var(--muted); font-size: .85rem; }
+        .link-btn { font: inherit; font-size: .85rem; color: var(--accent); background: none; border: 0; cursor: pointer; text-decoration: underline; }
+
+        .stories { padding-top: 14px; }
+        .lvl-note { color: var(--muted); font-size: .85rem; margin: 6px 0 0; }
+        .story { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-top: 16px; }
+        .story h2 { margin: 0; direction: ltr; text-align: right; font-family: var(--serif); font-size: 1.5rem; }
+        .story .t-ar { color: var(--muted); margin: 0 0 12px; }
+        .sp { padding: 10px 0; border-top: 1px dashed var(--line); }
+        .s-it { direction: ltr; text-align: left; font-family: var(--serif); font-size: 1.15rem; margin: 0; }
+        .s-ar { color: var(--muted); margin: 4px 0 0; }
+        .story h3 { margin: 16px 0 8px; font-size: 1rem; color: var(--accent); }
+        .vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+        .vw { background: var(--bg); border-radius: 8px; padding: 6px 10px; }
+        .vw b { display: block; direction: ltr; text-align: left; font-family: var(--serif); font-weight: 500; }
+        .vw span { color: var(--muted); font-size: .9rem; }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header class="top">
+            <h1>كلمات إيطالية</h1>
+            <div class="modes">
+                <button type="button" class="mode" id="mode-words" aria-pressed="true">الكلمات</button>
+                <button type="button" class="mode" id="mode-stories" aria-pressed="false">القصص</button>
+            </div>
+            <input id="search" class="search" type="search" placeholder="ابحث بالإيطالي أو بالعربي" autocomplete="off">
+            <div class="tabs">
+                <button type="button" class="tab" id="tab-all" aria-pressed="true">كل الكلمات</button>
+                <button type="button" class="tab" id="tab-saved" aria-pressed="false">المحفوظات</button>
+                <button type="button" class="tab" id="filter-toggle" aria-expanded="false">تصفية</button>
+                <button type="button" class="quiz-start" id="start-quiz" hidden>ابدأ اختبارًا من المحفوظات</button>
+            </div>
+            <div id="fpanel" class="fpanel" hidden>
+                <span class="fl">الحرف (اختر واحدًا أو أكثر)</span><div id="f-letters" class="chips"></div>
+                <span class="fl">نوع الكلمة</span><div id="f-pos" class="chips"></div>
+                <div class="frow"><span id="fcount"></span><button type="button" class="link-btn" id="fclear">مسح التصفية</button></div>
+            </div>
+        </header>
+
+        <main id="word-container"></main>
+        <p id="empty" class="empty" hidden></p>
+        <section id="quiz" class="quiz" hidden aria-live="polite"></section>
+        <section id="stories" class="stories" hidden></section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const italianWords = [
+                // A
+                { word: "Abbandonare", meaning: "يهجر / يترك", example: "Non voglio abbandonare i miei sogni.", translation: "لا أريد أن أتخلى عن أحلامي." },
+                { word: "Abitare", meaning: "يسكن", example: "Abito in una piccola città.", translation: "أسكن في مدينة صغيرة." },
+                { word: "Abiti", meaning: "بدلة / ملابس", example: "Porto un abito nuovo.", translation: "أرتدي بدلة جديدة." },
+                { word: "Accendere", meaning: "يشعل", example: "Puoi accendere la luce?", translation: "هل يمكنك إشعال الضوء؟" },
+                { word: "Accettare", meaning: "يقبل", example: "Accetto la tua proposta.", translation: "أقبل عرضك." },
+                { word: "Acqua", meaning: "ماء", example: "Vorrei un bicchiere d'acqua.", translation: "أريد كوب ماء." },
+                { word: "Adesso", meaning: "الآن", example: "Adesso devo studiare.", translation: "الآن يجب أن أدرس." },
+                { word: "Aereo", meaning: "طائرة", example: "L'aereo parte domani.", translation: "تقلع الطائرة غدًا." },
+                { word: "Affare", meaning: "صفقة / أمر", example: "Questo è un buon affare.", translation: "هذه صفقة جيدة." },
+                { word: "Aglio", meaning: "ثوم", example: "Aggiungi un po' d'aglio.", translation: "أضف قليلًا من الثوم." },
+                { word: "Agosto", meaning: "أغسطس", example: "In agosto vado al mare.", translation: "في أغسطس أذهب إلى البحر." },
+                { word: "Aiutare", meaning: "يساعد", example: "Posso aiutarti?", translation: "هل أستطيع مساعدتك؟" },
+                { word: "Aiuto", meaning: "مساعدة", example: "Grazie per il tuo aiuto.", translation: "شكرًا على مساعدتك." },
+                { word: "Albergo", meaning: "فندق", example: "Dormiamo in un albergo vicino.", translation: "ننام في فندق قريب." },
+                { word: "Albero", meaning: "شجرة", example: "C'è un albero nel giardino.", translation: "توجد شجرة في الحديقة." },
+                { word: "Alcuni", meaning: "بعض", example: "Alcuni amici sono già qui.", translation: "بعض الأصدقاء هنا بالفعل." },
+                { word: "Allora", meaning: "إذن / حينها", example: "Allora, cosa facciamo?", translation: "إذن، ماذا نفعل؟" },
+                { word: "Alto", meaning: "طويل / مرتفع", example: "Mio fratello è molto alto.", translation: "أخي طويل جدًا." },
+                { word: "Altro", meaning: "آخر", example: "Vorrei un altro caffè.", translation: "أريد قهوة أخرى." },
+                { word: "Amare", meaning: "يحب", example: "Amo la mia famiglia.", translation: "أحب عائلتي." },
+                { word: "Ambiente", meaning: "بيئة", example: "Dobbiamo proteggere l'ambiente.", translation: "يجب أن نحمي البيئة." },
+                { word: "Americano", meaning: "أمريكي", example: "Il mio vicino è americano.", translation: "جاري أمريكي." },
+                { word: "Amico", meaning: "صديق", example: "Marco è il mio migliore amico.", translation: "ماركو هو أفضل أصدقائي." },
+                { word: "Amore", meaning: "حب", example: "L'amore è più forte di tutto.", translation: "الحب أقوى من كل شيء." },
+                { word: "Anche", meaning: "أيضًا", example: "Vengo anche io.", translation: "سآتي أنا أيضًا." },
+                { word: "Ancora", meaning: "ما زال / مرة أخرى", example: "Sei ancora a casa?", translation: "هل ما زلت في البيت؟" },
+                { word: "Andare", meaning: "يذهب", example: "Vado a scuola in autobus.", translation: "أذهب إلى المدرسة بالحافلة." },
+                { word: "Angelo", meaning: "ملاك", example: "Sembra un angelo.", translation: "يبدو كملاك." },
+                { word: "Anima", meaning: "روح", example: "Ha un'anima gentile.", translation: "لديه روح لطيفة." },
+                { word: "Animale", meaning: "حيوان", example: "Il cane è un animale fedele.", translation: "الكلب حيوان وفي." },
+                { word: "Anno", meaning: "سنة", example: "Quest'anno studio l'italiano.", translation: "هذه السنة أدرس الإيطالية." },
+                { word: "Antico", meaning: "قديم", example: "Roma è una città antica.", translation: "روما مدينة قديمة." },
+                { word: "Aperto", meaning: "مفتوح", example: "Il negozio è aperto.", translation: "المحل مفتوح." },
+                { word: "Appartamento", meaning: "شقة", example: "Cerco un appartamento in centro.", translation: "أبحث عن شقة في وسط المدينة." },
+                { word: "Appena", meaning: "للتو", example: "Sono appena arrivato.", translation: "وصلت للتو." },
+                { word: "Aprire", meaning: "يفتح", example: "Apri la finestra, per favore.", translation: "افتح النافذة من فضلك." },
+                { word: "Arancia", meaning: "برتقالة", example: "Mangio un'arancia ogni mattina.", translation: "آكل برتقالة كل صباح." },
+                { word: "Aria", meaning: "هواء", example: "Qui l'aria è molto fresca.", translation: "الهواء هنا منعش جدًا." },
+                { word: "Arrivare", meaning: "يصل", example: "Il treno arriva alle otto.", translation: "يصل القطار في الثامنة." },
+                { word: "Arte", meaning: "فن", example: "Amo l'arte moderna.", translation: "أحب الفن الحديث." },
+                { word: "Ascoltare", meaning: "يستمع", example: "Mi piace ascoltare la musica.", translation: "أحب الاستماع إلى الموسيقى." },
+                { word: "Aspettare", meaning: "ينتظر", example: "Ti aspetto davanti al bar.", translation: "أنتظرك أمام المقهى." },
+                { word: "Attenzione", meaning: "انتباه", example: "Fai attenzione alla strada!", translation: "انتبه إلى الطريق!" },
+                { word: "Attore", meaning: "ممثل", example: "Mio zio è un attore famoso.", translation: "عمي ممثل مشهور." },
+                { word: "Autobus", meaning: "حافلة", example: "L'autobus è in ritardo.", translation: "الحافلة متأخرة." },
+                { word: "Autunno", meaning: "خريف", example: "In autunno cadono le foglie.", translation: "في الخريف تسقط الأوراق." },
+                { word: "Avere", meaning: "يملك / لديه", example: "Ho due sorelle.", translation: "لدي أختان." },
+                { word: "Avvocato", meaning: "محامٍ", example: "Vorrei parlare con un avvocato.", translation: "أريد التحدث مع محامٍ." },
+                { word: "Azione", meaning: "فعل / عمل", example: "Ogni azione ha una conseguenza.", translation: "لكل فعل نتيجة." },
+                { word: "Azzurro", meaning: "أزرق سماوي", example: "Il cielo è azzurro oggi.", translation: "السماء زرقاء صافية اليوم." },
+
+                // B
+                { word: "Baciare", meaning: "يقبّل", example: "Lui vuole baciare sua moglie.", translation: "هو يريد أن يقبّل زوجته." },
+                { word: "Bacio", meaning: "قبلة", example: "Mi ha dato un bacio.", translation: "أعطاني قبلة." },
+                { word: "Bagno", meaning: "حمّام", example: "Il bagno è a destra.", translation: "الحمّام على اليمين." },
+                { word: "Balcone", meaning: "شرفة", example: "Prendiamo il caffè sul balcone.", translation: "نشرب القهوة على الشرفة." },
+                { word: "Ballare", meaning: "يرقص", example: "Ballano tutta la notte.", translation: "يرقصون طوال الليل." },
+                { word: "Bambina", meaning: "طفلة", example: "La bambina disegna un fiore.", translation: "الطفلة ترسم وردة." },
+                { word: "Bambino", meaning: "طفل", example: "Il bambino gioca in giardino.", translation: "الطفل يلعب في الحديقة." },
+                { word: "Banca", meaning: "بنك", example: "La banca apre alle nove.", translation: "يفتح البنك في التاسعة." },
+                { word: "Bandiera", meaning: "علم", example: "La bandiera italiana è tricolore.", translation: "العلم الإيطالي ثلاثي الألوان." },
+                { word: "Barba", meaning: "لحية", example: "Mio padre ha la barba.", translation: "أبي لديه لحية." },
+                { word: "Barca", meaning: "قارب", example: "Andiamo in barca domani.", translation: "نذهب في قارب غدًا." },
+                { word: "Barista", meaning: "نادل القهوة", example: "Il barista prepara il cappuccino.", translation: "نادل القهوة يحضّر الكابتشينو." },
+                { word: "Basso", meaning: "قصير / منخفض", example: "Il tavolo è troppo basso.", translation: "الطاولة منخفضة جدًا." },
+                { word: "Basta", meaning: "يكفي", example: "Basta così, grazie.", translation: "هذا يكفي، شكرًا." },
+                { word: "Battere", meaning: "يضرب / يهزم", example: "La nostra squadra può battere tutti.", translation: "فريقنا يستطيع هزيمة الجميع." },
+                { word: "Bellezza", meaning: "جمال", example: "Ammiro la bellezza del mare.", translation: "أُعجب بجمال البحر." },
+                { word: "Bello", meaning: "جميل", example: "Che bel giorno!", translation: "يا له من يوم جميل!" },
+                { word: "Bene", meaning: "جيد / بخير", example: "Sto bene, grazie.", translation: "أنا بخير، شكرًا." },
+                { word: "Benzina", meaning: "بنزين", example: "Devo comprare la benzina.", translation: "يجب أن أشتري بنزينًا." },
+                { word: "Bere", meaning: "يشرب", example: "Voglio bere un tè.", translation: "أريد أن أشرب شايًا." },
+                { word: "Bianco", meaning: "أبيض", example: "Ho una camicia bianca.", translation: "عندي قميص أبيض." },
+                { word: "Biblioteca", meaning: "مكتبة", example: "Studio in biblioteca.", translation: "أدرس في المكتبة." },
+                { word: "Bicicletta", meaning: "دراجة", example: "Vado al lavoro in bicicletta.", translation: "أذهب إلى العمل بالدراجة." },
+                { word: "Biglietto", meaning: "تذكرة", example: "Ho comprato due biglietti.", translation: "اشتريت تذكرتين." },
+                { word: "Bilancia", meaning: "ميزان", example: "Metti la frutta sulla bilancia.", translation: "ضع الفاكهة على الميزان." },
+                { word: "Birra", meaning: "بيرة", example: "Una birra fredda, per favore.", translation: "بيرة باردة من فضلك." },
+                { word: "Biscotto", meaning: "بسكويت", example: "Mangio un biscotto con il latte.", translation: "آكل بسكويتة مع الحليب." },
+                { word: "Bisogna", meaning: "يجب", example: "Bisogna partire presto.", translation: "يجب أن نغادر مبكرًا." },
+                { word: "Bisogno", meaning: "حاجة", example: "Ho bisogno di aiuto.", translation: "أحتاج إلى مساعدة." },
+                { word: "Blu", meaning: "أزرق", example: "Il mare è blu.", translation: "البحر أزرق." },
+                { word: "Bocca", meaning: "فم", example: "Apri la bocca, per favore.", translation: "افتح فمك من فضلك." },
+                { word: "Bolletta", meaning: "فاتورة", example: "Devo pagare la bolletta della luce.", translation: "يجب أن أدفع فاتورة الكهرباء." },
+                { word: "Bollire", meaning: "يغلي", example: "L'acqua sta per bollire.", translation: "الماء على وشك أن يغلي." },
+                { word: "Borsa", meaning: "حقيبة", example: "La mia borsa è pesante.", translation: "حقيبتي ثقيلة." },
+                { word: "Bosco", meaning: "غابة", example: "Camminiamo nel bosco.", translation: "نمشي في الغابة." },
+                { word: "Bottiglia", meaning: "زجاجة", example: "Compro una bottiglia d'acqua.", translation: "أشتري زجاجة ماء." },
+                { word: "Braccio", meaning: "ذراع", example: "Mi fa male il braccio.", translation: "ذراعي تؤلمني." },
+                { word: "Bravo", meaning: "ماهر / جيد", example: "Sei molto bravo!", translation: "أنت ماهر جدًا!" },
+                { word: "Breve", meaning: "قصير", example: "È un viaggio breve.", translation: "إنها رحلة قصيرة." },
+                { word: "Brodo", meaning: "مرق / شوربة", example: "Il brodo di pollo è caldo.", translation: "مرق الدجاج ساخن." },
+                { word: "Bruciare", meaning: "يحرق", example: "Attento a non bruciare la carne.", translation: "انتبه ألّا تحرق اللحم." },
+                { word: "Bruno", meaning: "بني", example: "Ha i capelli bruni.", translation: "شعره بني." },
+                { word: "Brutto", meaning: "قبيح", example: "Oggi il tempo è brutto.", translation: "الطقس سيئ اليوم." },
+                { word: "Bugia", meaning: "كذبة", example: "Non dire bugie.", translation: "لا تكذب." },
+                { word: "Buio", meaning: "ظلام", example: "Ho paura del buio.", translation: "أخاف من الظلام." },
+                { word: "Buonasera", meaning: "مساء الخير", example: "Buonasera a tutti!", translation: "مساء الخير للجميع!" },
+                { word: "Buongiorno", meaning: "صباح الخير / نهارك سعيد", example: "Buongiorno, come sta?", translation: "صباح الخير، كيف حالك؟" },
+                { word: "Buono", meaning: "طيب / جيد", example: "Questo pane è buono.", translation: "هذا الخبز طيب." },
+                { word: "Burro", meaning: "زبدة", example: "Spalmo il burro sul pane.", translation: "أدهن الزبدة على الخبز." },
+                { word: "Busta", meaning: "ظرف", example: "Metti la lettera nella busta.", translation: "ضع الرسالة في الظرف." },
+
+                 // C
+    { word: "Cadere", meaning: "يسقط", example: "Attenzione, puoi cadere!", translation: "احذر، قد تسقط!" },
+    { word: "Caffè", meaning: "قهوة", example: "Prendo un caffè al bar.", translation: "أشرب قهوة في المقهى." },
+    { word: "Calcio", meaning: "كرة القدم", example: "Il calcio è molto popolare in Italia.", translation: "كرة القدم شعبية جدًا في إيطاليا." },
+    { word: "Caldo", meaning: "ساخن / دافئ", example: "Oggi fa molto caldo.", translation: "الجو حار جدًا اليوم." },
+    { word: "Calmo", meaning: "هادئ", example: "Il mare oggi è calmo.", translation: "البحر هادئ اليوم." },
+    { word: "Calzino", meaning: "جورب", example: "Ho perso un calzino.", translation: "أضعت جوربًا." },
+    { word: "Cambiare", meaning: "يغير", example: "Voglio cambiare casa.", translation: "أريد تغيير بيتي." },
+    { word: "Camera", meaning: "غرفة", example: "La mia camera è piccola.", translation: "غرفتي صغيرة." },
+    { word: "Camicia", meaning: "قميص", example: "Questa camicia è troppo larga.", translation: "هذا القميص واسع جدًا." },
+    { word: "Camminare", meaning: "يمشي", example: "Mi piace camminare la sera.", translation: "أحب المشي في المساء." },
+    { word: "Campagna", meaning: "ريف", example: "Vivono in campagna.", translation: "يعيشون في الريف." },
+    { word: "Campo", meaning: "حقل / ملعب", example: "I bambini corrono nel campo.", translation: "الأطفال يركضون في الحقل." },
+    { word: "Candela", meaning: "شمعة", example: "Accendo una candela.", translation: "أشعل شمعة." },
+    { word: "Cane", meaning: "كلب", example: "Il cane dorme sul divano.", translation: "الكلب ينام على الأريكة." },
+    { word: "Cantare", meaning: "يغني", example: "Lei sa cantare molto bene.", translation: "هي تعرف الغناء جيدًا." },
+    { word: "Capello", meaning: "شَعر", example: "Ha un capello bianco.", translation: "لديه شعرة بيضاء." },
+    { word: "Capire", meaning: "يفهم", example: "Non capisco la domanda.", translation: "لا أفهم السؤال." },
+    { word: "Capo", meaning: "رئيس", example: "Il mio capo è gentile.", translation: "رئيسي لطيف." },
+    { word: "Carne", meaning: "لحم", example: "Non mangio carne.", translation: "لا آكل اللحم." },
+    { word: "Caro", meaning: "عزيز / غالٍ", example: "Caro amico, come stai?", translation: "صديقي العزيز، كيف حالك؟" },
+    { word: "Carta", meaning: "ورق / بطاقة", example: "Ho bisogno di un foglio di carta.", translation: "أحتاج إلى ورقة." },
+    { word: "Casa", meaning: "بيت", example: "Torno a casa alle sei.", translation: "أعود إلى البيت في السادسة." },
+    { word: "Cattivo", meaning: "سيئ / شرير", example: "Non essere cattivo con lui.", translation: "لا تكن سيئًا معه." },
+    { word: "Cena", meaning: "عشاء", example: "La cena è pronta.", translation: "العشاء جاهز." },
+    { word: "Centro", meaning: "وسط / مركز", example: "Abito nel centro della città.", translation: "أسكن في وسط المدينة." },
+    { word: "Cercare", meaning: "يبحث عن", example: "Cerco le mie chiavi.", translation: "أبحث عن مفاتيحي." },
+    { word: "Certo", meaning: "بالتأكيد / مؤكد", example: "Certo, ti aiuto volentieri!", translation: "بالتأكيد، سأساعدك بسرور!" },
+    { word: "Chiamare", meaning: "يتصل / يسمي", example: "Ti chiamo domani mattina.", translation: "سأتصل بك غدًا صباحًا." },
+    { word: "Chiave", meaning: "مفتاح", example: "Dov'è la chiave di casa?", translation: "أين مفتاح البيت؟" },
+    { word: "Chiesa", meaning: "كنيسة", example: "La chiesa è molto antica.", translation: "الكنيسة قديمة جدًا." },
+    { word: "Ciao", meaning: "مرحبًا / وداعًا", example: "Ciao, ci vediamo domani!", translation: "مرحبًا، نتقابل غدًا!" },
+    { word: "Cibo", meaning: "طعام", example: "Il cibo italiano è delizioso.", translation: "الطعام الإيطالي لذيذ." },
+    { word: "Cielo", meaning: "سماء", example: "Il cielo è pieno di stelle.", translation: "السماء مليئة بالنجوم." },
+    { word: "Cinema", meaning: "سينما", example: "Stasera andiamo al cinema.", translation: "الليلة نذهب إلى السينما." },
+    { word: "Cintura", meaning: "حزام", example: "Allaccia la cintura di sicurezza.", translation: "اربط حزام الأمان." },
+    { word: "Cipolla", meaning: "بصل", example: "Taglio la cipolla per il sugo.", translation: "أقطّع البصل للصلصة." },
+    { word: "Città", meaning: "مدينة", example: "Milano è una grande città.", translation: "ميلانو مدينة كبيرة." },
+    { word: "Classe", meaning: "فصل / صف", example: "La classe inizia alle otto.", translation: "يبدأ الصف في الثامنة." },
+    { word: "Coda", meaning: "ذيل / طابور", example: "Il gatto muove la coda.", translation: "القط يحرّك ذيله." },
+    { word: "Colazione", meaning: "فطور", example: "Faccio colazione alle sette.", translation: "أتناول الفطور في السابعة." },
+    { word: "Collina", meaning: "تل", example: "La casa è su una collina.", translation: "البيت على تل." },
+    { word: "Colore", meaning: "لون", example: "Qual è il tuo colore preferito?", translation: "ما لونك المفضل؟" },
+    { word: "Coltello", meaning: "سكين", example: "Passami il coltello, per favore.", translation: "ناولني السكين من فضلك." },
+    { word: "Come", meaning: "كيف / مثل", example: "Come ti chiami?", translation: "ما اسمك؟" },
+    { word: "Comprare", meaning: "يشتري", example: "Voglio comprare un libro.", translation: "أريد أن أشتري كتابًا." },
+    { word: "Conoscere", meaning: "يعرف / يتعرف على", example: "Piacere di conoscerti!", translation: "سررت بمعرفتك!" },
+    { word: "Corpo", meaning: "جسد", example: "Il corpo ha bisogno di riposo.", translation: "الجسد يحتاج إلى راحة." },
+    { word: "Correre", meaning: "يركض", example: "Corro ogni mattina al parco.", translation: "أركض كل صباح في الحديقة." },
+    { word: "Cosa", meaning: "شيء / ماذا", example: "Cosa stai facendo?", translation: "ماذا تفعل؟" },
+    { word: "Costare", meaning: "يكلّف", example: "Quanto costa questo?", translation: "كم يكلّف هذا؟" },
+
+    // D
+    { word: "Dare", meaning: "يعطي", example: "Puoi dare questo libro a Marco?", translation: "هل يمكنك أن تعطي هذا الكتاب لماركو؟" },
+    { word: "Davanti", meaning: "أمام", example: "La macchina è davanti alla casa.", translation: "السيارة أمام البيت." },
+    { word: "Dente", meaning: "سن", example: "Mi fa male un dente.", translation: "يؤلمني سن." },
+    { word: "Desiderare", meaning: "يرغب", example: "Desidero solo un po' di pace.", translation: "لا أرغب إلا في قليل من السلام." },
+    { word: "Destra", meaning: "يمين", example: "Gira a destra al semaforo.", translation: "انعطف يمينًا عند إشارة المرور." },
+    { word: "Difficile", meaning: "صعب", example: "L'esame di oggi era difficile.", translation: "كان امتحان اليوم صعبًا." },
+    { word: "Dimenticare", meaning: "ينسى", example: "Non dimenticare le chiavi!", translation: "لا تنسَ المفاتيح!" },
+    { word: "Dio", meaning: "الله", example: "Dio è grande.", translation: "الله كبير." },
+    { word: "Dire", meaning: "يقول", example: "Cosa vuoi dire?", translation: "ماذا تريد أن تقول؟" },
+    { word: "Discutere", meaning: "يناقش", example: "Dobbiamo discutere il problema.", translation: "يجب أن نناقش المشكلة." },
+    { word: "Disegnare", meaning: "يرسم", example: "Mi piace disegnare paesaggi.", translation: "أحب رسم المناظر الطبيعية." },
+    { word: "Diventare", meaning: "يصبح", example: "Voglio diventare medico.", translation: "أريد أن أصبح طبيبًا." },
+    { word: "Divertente", meaning: "ممتع / مضحك", example: "Questo film è molto divertente.", translation: "هذا الفيلم ممتع جدًا." },
+    { word: "Dolce", meaning: "حلو / حلوى", example: "Preferisco il caffè dolce.", translation: "أفضّل القهوة الحلوة." },
+    { word: "Domanda", meaning: "سؤال", example: "Ho una domanda per te.", translation: "عندي سؤال لك." },
+    { word: "Domani", meaning: "غدًا", example: "Domani vado al lavoro presto.", translation: "غدًا أذهب إلى العمل مبكرًا." },
+    { word: "Donna", meaning: "امرأة", example: "Quella donna è la mia insegnante.", translation: "تلك المرأة هي معلمتي." },
+    { word: "Dormire", meaning: "ينام", example: "I bambini vogliono dormire.", translation: "الأطفال يريدون النوم." },
+    { word: "Dove", meaning: "أين", example: "Dove abiti?", translation: "أين تسكن؟" },
+    { word: "Dovere", meaning: "يجب / واجب", example: "Devo finire i compiti.", translation: "يجب أن أنهي واجباتي." },
+
+    // E
+    { word: "E", meaning: "و", example: "Io e te siamo amici.", translation: "أنا وأنت صديقان." },
+    { word: "Ecco", meaning: "ها هو / ها هي", example: "Ecco il tuo caffè.", translation: "هذه قهوتك." },
+    { word: "Economico", meaning: "رخيص / اقتصادي", example: "Questo ristorante è economico.", translation: "هذا المطعم رخيص." },
+    { word: "Educazione", meaning: "تعليم / تربية", example: "L'educazione è molto importante.", translation: "التعليم مهم جدًا." },
+    { word: "Elegante", meaning: "أنيق", example: "Indossa un vestito elegante.", translation: "ترتدي فستانًا أنيقًا." },
+    { word: "Energia", meaning: "طاقة", example: "Oggi ho poca energia.", translation: "لديّ طاقة قليلة اليوم." },
+    { word: "Enorme", meaning: "ضخم", example: "Hanno una casa enorme.", translation: "لديهم بيت ضخم." },
+    { word: "Entrare", meaning: "يدخل", example: "Posso entrare?", translation: "هل يمكنني الدخول؟" },
+    { word: "Errore", meaning: "خطأ", example: "Ho fatto un errore.", translation: "لقد ارتكبت خطأ." },
+    { word: "Esame", meaning: "امتحان", example: "Domani ho un esame di italiano.", translation: "غدًا عندي امتحان إيطالي." },
+    { word: "Esatto", meaning: "صحيح / دقيق", example: "Sì, è esatto!", translation: "نعم، هذا صحيح!" },
+    { word: "Esempio", meaning: "مثال", example: "Puoi farmi un esempio?", translation: "هل يمكنك أن تعطيني مثالًا؟" },
+    { word: "Esistere", meaning: "يوجد", example: "I draghi non esistono.", translation: "التنانين غير موجودة." },
+    { word: "Esperienza", meaning: "خبرة / تجربة", example: "Ho molta esperienza in questo campo.", translation: "لديّ خبرة كبيرة في هذا المجال." },
+    { word: "Esprimere", meaning: "يعبر عن", example: "È difficile esprimere i miei sentimenti.", translation: "من الصعب أن أعبّر عن مشاعري." },
+    { word: "Essere", meaning: "يكون", example: "Voglio essere felice.", translation: "أريد أن أكون سعيدًا." },
+    { word: "Estate", meaning: "صيف", example: "In estate faccio il bagno in mare.", translation: "في الصيف أسبح في البحر." },
+    { word: "Età", meaning: "عمر", example: "Che età hai?", translation: "كم عمرك؟" },
+    { word: "Europa", meaning: "أوروبا", example: "L'Italia è in Europa.", translation: "إيطاليا في أوروبا." },
+    { word: "Evitare", meaning: "يتجنب", example: "Cerco di evitare il traffico.", translation: "أحاول تجنب الزحام." },
+
+    // F
+    { word: "Facile", meaning: "سهل", example: "Questo esercizio è facile.", translation: "هذا التمرين سهل." },
+    { word: "Fame", meaning: "جوع", example: "Ho molta fame.", translation: "أنا جائع جدًا." },
+    { word: "Famiglia", meaning: "عائلة", example: "La mia famiglia vive al Cairo.", translation: "تعيش عائلتي في القاهرة." },
+    { word: "Famoso", meaning: "مشهور", example: "È un cantante molto famoso.", translation: "إنه مغنٍّ مشهور جدًا." },
+    { word: "Fare", meaning: "يفعل", example: "Cosa fai stasera?", translation: "ماذا تفعل الليلة؟" },
+    { word: "Felice", meaning: "سعيد", example: "Sono felice di vederti.", translation: "أنا سعيد برؤيتك." },
+    { word: "Felicità", meaning: "سعادة", example: "La felicità è nelle cose semplici.", translation: "السعادة في الأشياء البسيطة." },
+    { word: "Fermare", meaning: "يوقف", example: "Devi fermare la macchina qui.", translation: "يجب أن توقف السيارة هنا." },
+    { word: "Festa", meaning: "حفلة / عيد", example: "Sabato c'è una festa a casa mia.", translation: "يوم السبت توجد حفلة في بيتي." },
+    { word: "Figlia", meaning: "ابنة", example: "Mia figlia ha cinque anni.", translation: "ابنتي عمرها خمس سنوات." },
+    { word: "Figlio", meaning: "ابن", example: "Suo figlio studia medicina.", translation: "ابنه يدرس الطب." },
+    { word: "Finestra", meaning: "نافذة", example: "Apri la finestra, per favore.", translation: "افتح النافذة من فضلك." },
+    { word: "Finire", meaning: "ينهي", example: "Quando finisci di lavorare?", translation: "متى تنتهي من العمل؟" },
+    { word: "Fiore", meaning: "زهرة", example: "Ho comprato un fiore rosso.", translation: "اشتريت زهرة حمراء." },
+    { word: "Fiume", meaning: "نهر", example: "Il Nilo è un fiume lungo.", translation: "النيل نهر طويل." },
+    { word: "Foglio", meaning: "ورقة", example: "Ho bisogno di un foglio di carta.", translation: "أحتاج إلى ورقة." },
+    { word: "Forma", meaning: "شكل", example: "Questa scatola ha una forma strana.", translation: "لهذا الصندوق شكل غريب." },
+    { word: "Forse", meaning: "ربما", example: "Forse domani piove.", translation: "ربما تمطر غدًا." },
+    { word: "Fratello", meaning: "أخ", example: "Mio fratello gioca a calcio.", translation: "أخي يلعب كرة القدم." },
+    { word: "Freddo", meaning: "بارد", example: "Oggi fa molto freddo.", translation: "الجو بارد جدًا اليوم." },
+
+    // G
+    { word: "Gamba", meaning: "ساق / رجل", example: "Mi fa male la gamba.", translation: "ساقي تؤلمني." },
+    { word: "Gatto", meaning: "قط", example: "Il gatto dorme sul divano.", translation: "القط ينام على الأريكة." },
+    { word: "Gelato", meaning: "مثلجات / آيس كريم", example: "Vorrei un gelato al cioccolato.", translation: "أريد آيس كريم بالشوكولاتة." },
+    { word: "Generale", meaning: "عام", example: "In generale sto bene.", translation: "بشكل عام أنا بخير." },
+    { word: "Gente", meaning: "ناس", example: "C'è molta gente in piazza.", translation: "يوجد كثير من الناس في الساحة." },
+    { word: "Gentile", meaning: "لطيف / مهذب", example: "Il tuo amico è molto gentile.", translation: "صديقك لطيف جدًا." },
+    { word: "Giallo", meaning: "أصفر", example: "Mi piace il colore giallo.", translation: "أحب اللون الأصفر." },
+    { word: "Giardino", meaning: "حديقة", example: "I bambini giocano in giardino.", translation: "الأطفال يلعبون في الحديقة." },
+    { word: "Giocare", meaning: "يلعب", example: "Giochiamo a scacchi?", translation: "هل نلعب الشطرنج؟" },
+    { word: "Giornale", meaning: "جريدة", example: "Leggo il giornale ogni mattina.", translation: "أقرأ الجريدة كل صباح." },
+    { word: "Giorno", meaning: "يوم", example: "Che bel giorno!", translation: "يا له من يوم جميل!" },
+    { word: "Giovane", meaning: "شاب / صغير السن", example: "Sono ancora giovane.", translation: "ما زلت شابًا." },
+    { word: "Giusto", meaning: "صحيح / عادل", example: "Hai ragione, è giusto così.", translation: "أنت محق، هذا صحيح." },
+    { word: "Grande", meaning: "كبير", example: "Roma è una città grande.", translation: "روما مدينة كبيرة." },
+    { word: "Grave", meaning: "خطير / جسيم", example: "Non è niente di grave.", translation: "ليس شيئًا خطيرًا." },
+    { word: "Grazie", meaning: "شكرًا", example: "Grazie mille per l'aiuto!", translation: "شكرًا جزيلًا على المساعدة!" },
+    { word: "Grigio", meaning: "رمادي", example: "Il cielo è grigio oggi.", translation: "السماء رمادية اليوم." },
+    { word: "Gruppo", meaning: "مجموعة", example: "Studio con un gruppo di amici.", translation: "أدرس مع مجموعة من الأصدقاء." },
+    { word: "Guardare", meaning: "ينظر / يشاهد", example: "Guardiamo un film stasera?", translation: "هل نشاهد فيلمًا الليلة؟" },
+    { word: "Guida", meaning: "دليل / قيادة", example: "Ho comprato una guida di Roma.", translation: "اشتريت دليلًا لمدينة روما." },
+
+    // H
+    { word: "Hall", meaning: "صالة / بهو", example: "Ti aspetto nella hall dell'albergo.", translation: "أنتظرك في بهو الفندق." },
+    { word: "Hamburger", meaning: "هامبرغر", example: "Voglio un hamburger con patatine.", translation: "أريد هامبرغر مع بطاطس." },
+    { word: "Hardware", meaning: "مكونات الحاسوب", example: "Il computer ha un problema di hardware.", translation: "الحاسوب فيه مشكلة في المكونات المادية." },
+    { word: "Hobby", meaning: "هواية", example: "Il mio hobby è leggere.", translation: "هوايتي هي القراءة." },
+    { word: "Hotel", meaning: "فندق", example: "Prenotiamo un hotel vicino al mare.", translation: "لنحجز فندقًا قريبًا من البحر." },
+
+    // I
+    { word: "Idea", meaning: "فكرة", example: "Che bella idea!", translation: "يا لها من فكرة جميلة!" },
+    { word: "Ieri", meaning: "أمس", example: "Ieri sono andato al cinema.", translation: "أمس ذهبت إلى السينما." },
+    { word: "Immagine", meaning: "صورة", example: "Questa immagine è bellissima.", translation: "هذه الصورة جميلة جدًا." },
+    { word: "Imparare", meaning: "يتعلم", example: "Voglio imparare l'italiano.", translation: "أريد أن أتعلم الإيطالية." },
+    { word: "Importante", meaning: "مهم", example: "È importante dormire bene.", translation: "من المهم أن تنام جيدًا." },
+    { word: "Incontrare", meaning: "يقابل", example: "Ti incontro davanti alla stazione.", translation: "أقابلك أمام المحطة." },
+    { word: "Incredibile", meaning: "لا يصدق / مذهل", example: "È una storia incredibile!", translation: "إنها قصة لا تصدق!" },
+    { word: "Indietro", meaning: "إلى الخلف", example: "Fai un passo indietro.", translation: "تراجع خطوة إلى الخلف." },
+    { word: "Ingresso", meaning: "مدخل", example: "L'ingresso è a sinistra.", translation: "المدخل على اليسار." },
+    { word: "Iniziare", meaning: "يبدأ", example: "La lezione inizia alle nove.", translation: "يبدأ الدرس في التاسعة." },
+    { word: "Insegnante", meaning: "معلّم", example: "La mia insegnante è molto brava.", translation: "معلمتي ممتازة جدًا." },
+    { word: "Insegnare", meaning: "يُعلّم", example: "Mio padre insegna storia.", translation: "أبي يدرّس التاريخ." },
+    { word: "Insieme", meaning: "معًا", example: "Andiamo al mare insieme.", translation: "لنذهب إلى البحر معًا." },
+    { word: "Interessante", meaning: "مثير للاهتمام", example: "Il libro è molto interessante.", translation: "الكتاب مثير للاهتمام جدًا." },
+    { word: "Internet", meaning: "الإنترنت", example: "Non c'è Internet qui.", translation: "لا يوجد إنترنت هنا." },
+    { word: "Inutile", meaning: "عديم الفائدة", example: "È inutile discutere.", translation: "لا فائدة من النقاش." },
+    { word: "Inverno", meaning: "شتاء", example: "In inverno fa freddo.", translation: "في الشتاء يكون الجو باردًا." },
+    { word: "Invitare", meaning: "يدعو", example: "Voglio invitarti a cena.", translation: "أريد أن أدعوك إلى العشاء." },
+    { word: "Isola", meaning: "جزيرة", example: "La Sicilia è un'isola grande.", translation: "صقلية جزيرة كبيرة." },
+    { word: "Italiano", meaning: "إيطالي", example: "Parlo un po' di italiano.", translation: "أتكلم قليلًا من الإيطالية." },
+
+    // L
+    { word: "Lago", meaning: "بحيرة", example: "Facciamo una gita al lago.", translation: "لنقم برحلة إلى البحيرة." },
+    { word: "Lasciare", meaning: "يترك", example: "Non lasciare la porta aperta.", translation: "لا تترك الباب مفتوحًا." },
+    { word: "Latte", meaning: "حليب", example: "Bevo il latte ogni mattina.", translation: "أشرب الحليب كل صباح." },
+    { word: "Lavorare", meaning: "يعمل", example: "Lavoro in un ufficio in centro.", translation: "أعمل في مكتب وسط المدينة." },
+    { word: "Lavoro", meaning: "عمل", example: "Cerco un nuovo lavoro.", translation: "أبحث عن عمل جديد." },
+    { word: "Leggere", meaning: "يقرأ", example: "Mi piace leggere prima di dormire.", translation: "أحب القراءة قبل النوم." },
+    { word: "Lento", meaning: "بطيء", example: "Questo treno è troppo lento.", translation: "هذا القطار بطيء جدًا." },
+    { word: "Lettera", meaning: "رسالة / حرف", example: "Ho scritto una lettera a mia nonna.", translation: "كتبت رسالة إلى جدتي." },
+    { word: "Letto", meaning: "سرير", example: "Il letto è molto comodo.", translation: "السرير مريح جدًا." },
+    { word: "Libero", meaning: "حر", example: "Sabato sono libero.", translation: "يوم السبت أنا متفرغ." },
+    { word: "Libro", meaning: "كتاب", example: "Questo libro è molto bello.", translation: "هذا الكتاب جميل جدًا." },
+    { word: "Lingua", meaning: "لغة / لسان", example: "L'italiano è una lingua bellissima.", translation: "الإيطالية لغة جميلة جدًا." },
+    { word: "Lontano", meaning: "بعيد", example: "La stazione è lontana da qui.", translation: "المحطة بعيدة من هنا." },
+    { word: "Loro", meaning: "هم / لهن", example: "Loro abitano a Milano.", translation: "هم يسكنون في ميلانو." },
+    { word: "Luce", meaning: "ضوء", example: "Spegni la luce, per favore.", translation: "أطفئ الضوء من فضلك." },
+    { word: "Luna", meaning: "قمر", example: "Stasera la luna è bellissima.", translation: "القمر جميل جدًا الليلة." },
+    { word: "Lunedì", meaning: "الاثنين", example: "Lunedì ho lezione all'università.", translation: "يوم الاثنين عندي محاضرة في الجامعة." },
+    { word: "Lungo", meaning: "طويل", example: "Il viaggio è stato molto lungo.", translation: "كانت الرحلة طويلة جدًا." },
+    { word: "Luogo", meaning: "مكان", example: "Questo è un luogo tranquillo.", translation: "هذا مكان هادئ." },
+
+    // M
+    { word: "Madre", meaning: "أم", example: "Mia madre cucina benissimo.", translation: "أمي تطبخ بشكل رائع." },
+    { word: "Mangiare", meaning: "يأكل", example: "Che cosa vuoi mangiare?", translation: "ماذا تريد أن تأكل؟" },
+    { word: "Mano", meaning: "يد", example: "Dammi la mano.", translation: "أعطني يدك." },
+    { word: "Mare", meaning: "بحر", example: "D'estate andiamo al mare.", translation: "في الصيف نذهب إلى البحر." },
+    { word: "Marito", meaning: "زوج", example: "Suo marito è ingegnere.", translation: "زوجها مهندس." },
+    { word: "Mattina", meaning: "صباح", example: "La mattina bevo un caffè.", translation: "في الصباح أشرب قهوة." },
+    { word: "Meno", meaning: "أقل", example: "Oggi c'è meno traffico.", translation: "اليوم الزحام أقل." },
+    { word: "Mese", meaning: "شهر", example: "Il mese prossimo vado in Italia.", translation: "الشهر القادم أسافر إلى إيطاليا." },
+    { word: "Mettere", meaning: "يضع", example: "Metti la borsa sulla sedia.", translation: "ضع الحقيبة على الكرسي." },
+    { word: "Mezzogiorno", meaning: "الظهر", example: "Pranziamo a mezzogiorno.", translation: "نتغدى عند الظهر." },
+    { word: "Migliore", meaning: "أفضل", example: "Sei il mio migliore amico.", translation: "أنت أفضل صديق لي." },
+    { word: "Minuto", meaning: "دقيقة", example: "Aspetta un minuto, per favore.", translation: "انتظر دقيقة من فضلك." },
+    { word: "Modo", meaning: "طريقة", example: "Non mi piace il tuo modo di parlare.", translation: "لا تعجبني طريقتك في الكلام." },
+    { word: "Mondo", meaning: "عالم", example: "Voglio viaggiare in tutto il mondo.", translation: "أريد أن أسافر حول العالم." },
+    { word: "Montagna", meaning: "جبل", example: "Andiamo in montagna questo weekend.", translation: "سنذهب إلى الجبل في عطلة نهاية الأسبوع هذه." },
+    { word: "Morte", meaning: "موت", example: "Ha paura della morte.", translation: "هو يخاف من الموت." },
+    { word: "Mostrare", meaning: "يُظهر", example: "Puoi mostrarmi la strada?", translation: "هل يمكنك أن تريني الطريق؟" },
+    { word: "Motivo", meaning: "سبب", example: "Qual è il motivo del ritardo?", translation: "ما سبب التأخير؟" },
+    { word: "Muro", meaning: "جدار", example: "C'è un quadro sul muro.", translation: "توجد لوحة على الجدار." },
+    { word: "Musica", meaning: "موسيقى", example: "Ascolto musica ogni giorno.", translation: "أستمع إلى الموسيقى كل يوم." },
+
+    // N
+    { word: "Nascere", meaning: "يولد", example: "Sono nato al Cairo.", translation: "وُلدت في القاهرة." },
+    { word: "Natura", meaning: "طبيعة", example: "Amo stare nella natura.", translation: "أحب أن أكون في الطبيعة." },
+    { word: "Nave", meaning: "سفينة", example: "La nave parte alle sei.", translation: "تغادر السفينة في السادسة." },
+    { word: "Nazionale", meaning: "وطني", example: "Questo è un museo nazionale.", translation: "هذا متحف وطني." },
+    { word: "Necessario", meaning: "ضروري", example: "È necessario studiare ogni giorno.", translation: "من الضروري أن تدرس كل يوم." },
+    { word: "Nero", meaning: "أسود", example: "Porto sempre un cappotto nero.", translation: "أرتدي دائمًا معطفًا أسود." },
+    { word: "Nessuno", meaning: "لا أحد", example: "Nessuno risponde al telefono.", translation: "لا أحد يرد على الهاتف." },
+    { word: "Neve", meaning: "ثلج", example: "In montagna c'è molta neve.", translation: "يوجد كثير من الثلج في الجبل." },
+    { word: "Niente", meaning: "لا شيء", example: "Non ho niente da fare.", translation: "ليس عندي شيء لأفعله." },
+    { word: "Nome", meaning: "اسم", example: "Come ti chiami? Il mio nome è Marco.", translation: "ما اسمك؟ اسمي ماركو." },
+    { word: "Nonna", meaning: "جدة", example: "Mia nonna fa una torta buonissima.", translation: "جدتي تصنع كعكة لذيذة جدًا." },
+    { word: "Nonno", meaning: "جد", example: "Mio nonno racconta belle storie.", translation: "جدي يحكي قصصًا جميلة." },
+    { word: "Normalmente", meaning: "عادةً", example: "Normalmente mi sveglio alle sette.", translation: "عادةً أستيقظ في السابعة." },
+    { word: "Nostro", meaning: "خاصتنا / لنا", example: "Questa è la nostra casa.", translation: "هذا بيتنا." },
+    { word: "Notte", meaning: "ليل", example: "Buona notte a tutti!", translation: "تصبحون على خير جميعًا!" },
+    { word: "Nove", meaning: "تسعة", example: "Ho nove libri.", translation: "عندي تسعة كتب." },
+    { word: "Novità", meaning: "خبر جديد / جديد", example: "Ci sono novità?", translation: "هل من أخبار جديدة؟" },
+    { word: "Numero", meaning: "رقم", example: "Qual è il tuo numero di telefono?", translation: "ما رقم هاتفك؟" },
+    { word: "Nuovo", meaning: "جديد", example: "Ho un telefono nuovo.", translation: "عندي هاتف جديد." },
+
+    // O
+    { word: "Occasione", meaning: "مناسبة / فرصة", example: "È un'occasione speciale.", translation: "إنها مناسبة خاصة." },
+    { word: "Occhio", meaning: "عين", example: "Ha gli occhi azzurri.", translation: "عيناه زرقاوان." },
+    { word: "Offrire", meaning: "يقدم", example: "Ti offro un caffè.", translation: "أدعوك إلى قهوة." },
+    { word: "Oggetto", meaning: "شيء / غرض", example: "Che cos'è questo oggetto?", translation: "ما هذا الشيء؟" },
+    { word: "Oggi", meaning: "اليوم", example: "Oggi sono molto stanco.", translation: "أنا متعب جدًا اليوم." },
+    { word: "Ogni", meaning: "كل", example: "Studio ogni giorno.", translation: "أدرس كل يوم." },
+    { word: "Oltre", meaning: "بعد / أكثر من", example: "Ci sono oltre cento persone.", translation: "يوجد أكثر من مئة شخص." },
+    { word: "Ora", meaning: "الآن / ساعة", example: "Che ora è?", translation: "كم الساعة؟" },
+    { word: "Orario", meaning: "موعد / جدول زمني", example: "Qual è l'orario del treno?", translation: "ما موعد القطار؟" },
+    { word: "Ordinare", meaning: "يطلب / يرتب", example: "Vorrei ordinare una pizza.", translation: "أريد أن أطلب بيتزا." },
+    { word: "Ore", meaning: "ساعات", example: "Studio per tre ore.", translation: "أدرس لمدة ثلاث ساعات." },
+    { word: "Orecchio", meaning: "أذن", example: "Mi fa male un orecchio.", translation: "تؤلمني أذن." },
+    { word: "Organizzare", meaning: "ينظم", example: "Organizziamo una festa per lui.", translation: "لننظم حفلة له." },
+    { word: "Origine", meaning: "أصل", example: "Qual è l'origine di questa parola?", translation: "ما أصل هذه الكلمة؟" },
+    { word: "Oro", meaning: "ذهب", example: "Questo anello è d'oro.", translation: "هذا الخاتم من ذهب." },
+    { word: "Orso", meaning: "دب", example: "L'orso vive nella foresta.", translation: "الدب يعيش في الغابة." },
+    { word: "Ospedale", meaning: "مستشفى", example: "Mio zio lavora in ospedale.", translation: "عمي يعمل في المستشفى." },
+    { word: "Ospite", meaning: "ضيف", example: "Abbiamo un ospite a cena.", translation: "عندنا ضيف على العشاء." },
+    { word: "Ottimo", meaning: "ممتاز", example: "Il ristorante era ottimo.", translation: "كان المطعم ممتازًا." },
+    { word: "Otto", meaning: "ثمانية", example: "Sono le otto di sera.", translation: "الساعة الثامنة مساءً." },
+
+    // P
+    { word: "Padre", meaning: "أب", example: "Mio padre lavora molto.", translation: "أبي يعمل كثيرًا." },
+    { word: "Pagare", meaning: "يدفع", example: "Posso pagare con la carta?", translation: "هل يمكنني الدفع بالبطاقة؟" },
+    { word: "Pane", meaning: "خبز", example: "Compro il pane ogni giorno.", translation: "أشتري الخبز كل يوم." },
+    { word: "Parlare", meaning: "يتكلم", example: "Posso parlare con te?", translation: "هل يمكنني التحدث معك؟" },
+    { word: "Parte", meaning: "جزء", example: "Questa è la parte più difficile.", translation: "هذا هو الجزء الأصعب." },
+    { word: "Partire", meaning: "يغادر", example: "Il treno parte alle dieci.", translation: "يغادر القطار في العاشرة." },
+    { word: "Passare", meaning: "يمر / يقضي", example: "Passo l'estate al mare.", translation: "أقضي الصيف على البحر." },
+    { word: "Pensare", meaning: "يفكر", example: "Penso spesso alla mia famiglia.", translation: "أفكر كثيرًا في عائلتي." },
+    { word: "Persona", meaning: "شخص", example: "È una persona molto simpatica.", translation: "إنه شخص ظريف جدًا." },
+    { word: "Pesce", meaning: "سمك", example: "Mangio il pesce il venerdì.", translation: "آكل السمك يوم الجمعة." },
+    { word: "Piacere", meaning: "يُعجب / متعة", example: "Mi piace la pizza.", translation: "تعجبني البيتزا." },
+    { word: "Piangere", meaning: "يبكي", example: "Il bambino inizia a piangere.", translation: "يبدأ الطفل بالبكاء." },
+    { word: "Piano", meaning: "ببطء / طابق / خطة", example: "Parla più piano, per favore.", translation: "تكلم ببطء أكثر من فضلك." },
+    { word: "Piccolo", meaning: "صغير", example: "Abito in un appartamento piccolo.", translation: "أسكن في شقة صغيرة." },
+    { word: "Piede", meaning: "قدم", example: "Mi fa male il piede.", translation: "قدمي تؤلمني." },
+    { word: "Porta", meaning: "باب", example: "Chiudi la porta, per favore.", translation: "أغلق الباب من فضلك." },
+    { word: "Portare", meaning: "يحمل / يأخذ", example: "Porto sempre uno zaino.", translation: "أحمل دائمًا حقيبة ظهر." },
+    { word: "Potere", meaning: "يستطيع", example: "Non posso venire domani.", translation: "لا أستطيع المجيء غدًا." },
+    { word: "Prendere", meaning: "يأخذ", example: "Prendo un caffè, e tu?", translation: "آخذ قهوة، وأنت؟" },
+    { word: "Prima", meaning: "قبل / أولًا", example: "Prima studio, poi esco.", translation: "أولًا أدرس، ثم أخرج." },
+
+    // Q
+    { word: "Qualche", meaning: "بعض / أيّ", example: "Ho qualche domanda per te.", translation: "عندي بعض الأسئلة لك." },
+    { word: "Qualcosa", meaning: "شيء ما", example: "Vuoi qualcosa da bere?", translation: "هل تريد شيئًا لتشربه؟" },
+    { word: "Qualcuno", meaning: "شخص ما", example: "Qualcuno ha visto le mie chiavi?", translation: "هل رأى أحد مفاتيحي؟" },
+    { word: "Quale", meaning: "أيّ / أي واحد", example: "Quale libro preferisci?", translation: "أي كتاب تفضّل؟" },
+    { word: "Qualità", meaning: "جودة / نوعية", example: "Questo prodotto è di ottima qualità.", translation: "هذا المنتج ذو جودة ممتازة." },
+    { word: "Quando", meaning: "متى / عندما", example: "Quando arriva il treno?", translation: "متى يصل القطار؟" },
+    { word: "Quanto", meaning: "كم / مقدار", example: "Quanto costa questo libro?", translation: "كم يكلف هذا الكتاب؟" },
+    { word: "Quaranta", meaning: "أربعون", example: "Mio padre ha quaranta anni.", translation: "عمر أبي أربعون سنة." },
+    { word: "Quarto", meaning: "رابع / غرفة", example: "Abito al quarto piano.", translation: "أسكن في الطابق الرابع." },
+    { word: "Quasi", meaning: "تقريبًا", example: "Sono quasi pronto.", translation: "أنا جاهز تقريبًا." },
+    { word: "Quattro", meaning: "أربعة", example: "Ci sono quattro sedie.", translation: "توجد أربعة كراسي." },
+    { word: "Quello", meaning: "ذلك", example: "Quello è il mio amico.", translation: "ذاك صديقي." },
+    { word: "Questione", meaning: "مسألة / قضية", example: "È una questione importante.", translation: "إنها مسألة مهمة." },
+    { word: "Questo", meaning: "هذا", example: "Questo libro è mio.", translation: "هذا الكتاب لي." },
+    { word: "Qui", meaning: "هنا", example: "Vieni qui, per favore.", translation: "تعال إلى هنا من فضلك." },
+    { word: "Quindi", meaning: "إذن / لذلك", example: "Sono stanco, quindi vado a dormire.", translation: "أنا متعب، لذلك سأنام." },
+    { word: "Quindici", meaning: "خمسة عشر", example: "La lezione dura quindici minuti.", translation: "يستغرق الدرس خمس عشرة دقيقة." },
+    { word: "Quinto", meaning: "خامس", example: "È il quinto giorno del corso.", translation: "إنه اليوم الخامس من الدورة." },
+    { word: "Quotidiano", meaning: "يومي", example: "Il caffè fa parte della mia vita quotidiana.", translation: "القهوة جزء من حياتي اليومية." },
+
+    // R
+    { word: "Ragazza", meaning: "فتاة", example: "La ragazza legge un libro.", translation: "الفتاة تقرأ كتابًا." },
+    { word: "Ragazzo", meaning: "ولد / شاب", example: "Quel ragazzo è mio cugino.", translation: "ذلك الولد ابن عمي." },
+    { word: "Ragione", meaning: "سبب / عقل", example: "Hai ragione!", translation: "أنت محق!" },
+    { word: "Rapido", meaning: "سريع", example: "Prendiamo il treno più rapido.", translation: "لنركب القطار الأسرع." },
+    { word: "Reale", meaning: "حقيقي / ملكي", example: "È una storia reale.", translation: "إنها قصة حقيقية." },
+    { word: "Regalo", meaning: "هدية", example: "Ho comprato un regalo per mia madre.", translation: "اشتريت هدية لأمي." },
+    { word: "Regione", meaning: "منطقة / إقليم", example: "La Toscana è una bella regione.", translation: "توسكانا إقليم جميل." },
+    { word: "Restare", meaning: "يبقى", example: "Voglio restare a casa oggi.", translation: "أريد أن أبقى في البيت اليوم." },
+    { word: "Ricordare", meaning: "يتذكر", example: "Non riesco a ricordare il suo nome.", translation: "لا أستطيع أن أتذكر اسمه." },
+    { word: "Ridere", meaning: "يضحك", example: "Ci piace ridere insieme.", translation: "نحب أن نضحك معًا." },
+    { word: "Ridire", meaning: "يقول مرة أخرى", example: "Puoi ridire la frase, per favore?", translation: "هل يمكنك أن تقول الجملة مرة أخرى من فضلك؟" },
+    { word: "Rientrare", meaning: "يعود / يدخل مرة أخرى", example: "Rientro a casa alle sei.", translation: "أعود إلى البيت في السادسة." },
+    { word: "Rispondere", meaning: "يجيب", example: "Devo rispondere a questa email.", translation: "يجب أن أرد على هذا البريد الإلكتروني." },
+    { word: "Ristorante", meaning: "مطعم", example: "Ceniamo in un ristorante italiano.", translation: "نتعشى في مطعم إيطالي." },
+    { word: "Risultato", meaning: "نتيجة", example: "Il risultato è ottimo.", translation: "النتيجة ممتازة." },
+    { word: "Riuscire", meaning: "ينجح / يتمكن", example: "Non riesco ad aprire la porta.", translation: "لا أستطيع فتح الباب." },
+    { word: "Rosa", meaning: "وردي / وردة", example: "Lei porta una maglietta rosa.", translation: "هي ترتدي قميصًا وردي اللون." },
+    { word: "Rosso", meaning: "أحمر", example: "La mia macchina è rossa.", translation: "سيارتي حمراء." },
+    { word: "Rotto", meaning: "مكسور", example: "Il telefono è rotto.", translation: "الهاتف مكسور." },
+    { word: "Rumore", meaning: "ضوضاء / صوت", example: "C'è troppo rumore qui.", translation: "توجد ضوضاء كثيرة هنا." },
+
+    // S
+    { word: "Salire", meaning: "يصعد", example: "Saliamo sul treno.", translation: "لنصعد إلى القطار." },
+    { word: "Sapere", meaning: "يعرف", example: "Non so dove abiti.", translation: "لا أعرف أين تسكن." },
+    { word: "Scegliere", meaning: "يختار", example: "Non riesco a scegliere.", translation: "لا أستطيع أن أختار." },
+    { word: "Scendere", meaning: "ينزل", example: "Scendo alla prossima fermata.", translation: "أنزل في المحطة القادمة." },
+    { word: "Scrivere", meaning: "يكتب", example: "Scrivo un'email al professore.", translation: "أكتب بريدًا إلكترونيًا للأستاذ." },
+    { word: "Scuola", meaning: "مدرسة", example: "I bambini vanno a scuola.", translation: "الأطفال يذهبون إلى المدرسة." },
+    { word: "Secondo", meaning: "ثانٍ / حسب", example: "Secondo me, hai ragione.", translation: "في رأيي، أنت محق." },
+    { word: "Sedia", meaning: "كرسي", example: "Siediti su questa sedia.", translation: "اجلس على هذا الكرسي." },
+    { word: "Semplice", meaning: "بسيط", example: "La ricetta è molto semplice.", translation: "الوصفة بسيطة جدًا." },
+    { word: "Sempre", meaning: "دائمًا", example: "Sono sempre in ritardo.", translation: "أنا دائمًا متأخر." },
+    { word: "Sera", meaning: "مساء", example: "Ci vediamo domani sera.", translation: "نلتقي غدًا مساءً." },
+    { word: "Servire", meaning: "يخدم / يحتاج", example: "Mi serve il tuo aiuto.", translation: "أحتاج إلى مساعدتك." },
+    { word: "Settimana", meaning: "أسبوع", example: "La settimana prossima parto.", translation: "الأسبوع القادم أسافر." },
+    { word: "Sicuro", meaning: "آمن / متأكد", example: "Sei sicuro di questo?", translation: "هل أنت متأكد من هذا؟" },
+    { word: "Signora", meaning: "سيدة", example: "Buongiorno, signora Rossi.", translation: "صباح الخير يا سيدة روسي." },
+    { word: "Signore", meaning: "سيد / رجل", example: "Buonasera, signore.", translation: "مساء الخير يا سيدي." },
+    { word: "Sinistra", meaning: "يسار", example: "Il bagno è a sinistra.", translation: "الحمام على اليسار." },
+    { word: "Sole", meaning: "شمس", example: "Oggi c'è il sole.", translation: "الشمس مشرقة اليوم." },
+    { word: "Solo", meaning: "فقط / وحيد", example: "Vivo solo in questa città.", translation: "أعيش وحدي في هذه المدينة." },
+
+    // T
+    { word: "Tagliare", meaning: "يقطع", example: "Devo tagliare il pane.", translation: "يجب أن أقطع الخبز." },
+    { word: "Tanto", meaning: "كثير / جدًا", example: "Grazie tanto!", translation: "شكرًا جزيلًا!" },
+    { word: "Tardi", meaning: "متأخرًا", example: "Oggi mi sono svegliato tardi.", translation: "استيقظت متأخرًا اليوم." },
+    { word: "Tavolo", meaning: "طاولة", example: "Il tavolo è vicino alla finestra.", translation: "الطاولة قريبة من النافذة." },
+    { word: "Telefono", meaning: "هاتف", example: "Il mio telefono è sul tavolo.", translation: "هاتفي على الطاولة." },
+    { word: "Tempo", meaning: "وقت / طقس", example: "Non ho tempo oggi.", translation: "ليس عندي وقت اليوم." },
+    { word: "Tenere", meaning: "يمسك / يحتفظ", example: "Puoi tenere la mia borsa?", translation: "هل يمكنك أن تمسك حقيبتي؟" },
+    { word: "Terra", meaning: "أرض", example: "La Terra gira intorno al Sole.", translation: "الأرض تدور حول الشمس." },
+    { word: "Testa", meaning: "رأس", example: "Ho mal di testa.", translation: "عندي صداع." },
+    { word: "Testo", meaning: "نص", example: "Leggi questo testo ad alta voce.", translation: "اقرأ هذا النص بصوت عالٍ." },
+    { word: "Tornare", meaning: "يعود", example: "Torno a casa alle otto.", translation: "أعود إلى البيت في الثامنة." },
+    { word: "Tradurre", meaning: "يترجم", example: "Devo tradurre questo testo.", translation: "يجب أن أترجم هذا النص." },
+    { word: "Tre", meaning: "ثلاثة", example: "Ho tre fratelli.", translation: "عندي ثلاثة إخوة." },
+    { word: "Treno", meaning: "قطار", example: "Il treno arriva in ritardo.", translation: "يصل القطار متأخرًا." },
+    { word: "Triste", meaning: "حزين", example: "Oggi sono un po' triste.", translation: "أنا حزين قليلًا اليوم." },
+    { word: "Troppo", meaning: "جدًا / أكثر من اللازم", example: "C'è troppo rumore qui.", translation: "توجد ضوضاء أكثر من اللازم هنا." },
+    { word: "Trovare", meaning: "يجد", example: "Non trovo le mie chiavi.", translation: "لا أجد مفاتيحي." },
+    { word: "Tuo", meaning: "خاصتك / لك", example: "Questo è il tuo libro?", translation: "هل هذا كتابك؟" },
+    { word: "Tutto", meaning: "كل شيء / كل", example: "Ho capito tutto.", translation: "فهمت كل شيء." },
+
+    // U
+    { word: "Ufficiale", meaning: "رسمي", example: "È un documento ufficiale.", translation: "إنها وثيقة رسمية." },
+    { word: "Ufficio", meaning: "مكتب", example: "Lavoro in un ufficio in centro.", translation: "أعمل في مكتب في وسط المدينة." },
+    { word: "Uguale", meaning: "متساوٍ / مماثل", example: "Questi due libri sono uguali.", translation: "هذان الكتابان متماثلان." },
+    { word: "Ultimamente", meaning: "مؤخرًا", example: "Ultimamente studio molto.", translation: "مؤخرًا أدرس كثيرًا." },
+    { word: "Ultimo", meaning: "أخير", example: "Questo è l'ultimo giorno di scuola.", translation: "هذا هو آخر يوم في المدرسة." },
+    { word: "Umido", meaning: "رطب", example: "Oggi il tempo è umido.", translation: "الطقس رطب اليوم." },
+    { word: "Unico", meaning: "وحيد / فريد", example: "È l'unico ristorante aperto.", translation: "إنه المطعم الوحيد المفتوح." },
+    { word: "Unione", meaning: "اتحاد", example: "L'unione fa la forza.", translation: "في الاتحاد قوة." },
+    { word: "Unire", meaning: "يوحّد / يربط", example: "Dobbiamo unire le forze.", translation: "يجب أن نوحّد قوانا." },
+    { word: "Università", meaning: "جامعة", example: "Studio all'università del Cairo.", translation: "أدرس في جامعة القاهرة." },
+    { word: "Uomo", meaning: "رجل", example: "L'uomo legge il giornale.", translation: "الرجل يقرأ الجريدة." },
+    { word: "Uovo", meaning: "بيضة", example: "Mangio un uovo a colazione.", translation: "آكل بيضة على الفطور." },
+    { word: "Urgente", meaning: "عاجل", example: "È una questione urgente.", translation: "إنها مسألة عاجلة." },
+    { word: "Urlo", meaning: "صرخة", example: "Ho sentito un urlo nella notte.", translation: "سمعت صرخة في الليل." },
+    { word: "Usanza", meaning: "عادة", example: "È un'antica usanza del paese.", translation: "إنها عادة قديمة في البلد." },
+    { word: "Usare", meaning: "يستخدم", example: "Posso usare il tuo telefono?", translation: "هل يمكنني استخدام هاتفك؟" },
+    { word: "Uscire", meaning: "يخرج", example: "Stasera esco con gli amici.", translation: "الليلة أخرج مع الأصدقاء." },
+    { word: "Utente", meaning: "مستخدم", example: "Ogni utente ha una password.", translation: "لكل مستخدم كلمة مرور." },
+    { word: "Utile", meaning: "مفيد", example: "Questo libro è molto utile.", translation: "هذا الكتاب مفيد جدًا." },
+    { word: "Utilizzare", meaning: "يستخدم", example: "Utilizzo il computer ogni giorno.", translation: "أستخدم الحاسوب كل يوم." },
+
+    // V
+    { word: "Vacanza", meaning: "عطلة / إجازة", example: "Siamo in vacanza a Roma.", translation: "نحن في إجازة في روما." },
+    { word: "Valore", meaning: "قيمة", example: "Questo anello ha molto valore.", translation: "لهذا الخاتم قيمة كبيرة." },
+    { word: "Vedere", meaning: "يرى", example: "Vedo una casa grande.", translation: "أرى بيتًا كبيرًا." },
+    { word: "Veloce", meaning: "سريع", example: "La mia macchina è molto veloce.", translation: "سيارتي سريعة جدًا." },
+    { word: "Venire", meaning: "يأتي", example: "Vieni con noi al mare?", translation: "هل تأتي معنا إلى البحر؟" },
+    { word: "Vento", meaning: "رياح", example: "Oggi c'è molto vento.", translation: "هناك رياح كثيرة اليوم." },
+    { word: "Vero", meaning: "حقيقي / صحيح", example: "Non è vero!", translation: "هذا ليس صحيحًا!" },
+    { word: "Vestito", meaning: "ملابس / فستان", example: "Che bel vestito!", translation: "يا له من فستان جميل!" },
+    { word: "Viaggio", meaning: "رحلة / سفر", example: "Buon viaggio!", translation: "رحلة سعيدة!" },
+    { word: "Vicino", meaning: "قريب", example: "Abito vicino alla stazione.", translation: "أسكن قرب المحطة." },
+    { word: "Vicolo", meaning: "زقاق", example: "Il ristorante è in un vicolo stretto.", translation: "المطعم في زقاق ضيق." },
+    { word: "Vino", meaning: "نبيذ", example: "Vorrei un bicchiere di vino rosso.", translation: "أريد كأسًا من النبيذ الأحمر." },
+    { word: "Visita", meaning: "زيارة", example: "Domani faccio visita a mia nonna.", translation: "غدًا سأزور جدتي." },
+    { word: "Vista", meaning: "منظر / رؤية", example: "Dalla finestra c'è una bella vista.", translation: "من النافذة منظر جميل." },
+    { word: "Vittoria", meaning: "انتصار", example: "La squadra festeggia la vittoria.", translation: "الفريق يحتفل بالانتصار." },
+    { word: "Vivere", meaning: "يعيش", example: "Voglio vivere in Italia.", translation: "أريد أن أعيش في إيطاليا." },
+    { word: "Voce", meaning: "صوت", example: "Ha una voce bellissima.", translation: "لها صوت جميل جدًا." },
+    { word: "Volere", meaning: "يريد", example: "Voglio imparare l'italiano.", translation: "أريد أن أتعلم الإيطالية." },
+    { word: "Volta", meaning: "مرة", example: "Una volta al mese vado al cinema.", translation: "مرة في الشهر أذهب إلى السينما." },
+
+    // Z
+    { word: "Zaino", meaning: "حقيبة ظهر", example: "Il mio zaino è molto pesante.", translation: "حقيبة ظهري ثقيلة جدًا." },
+    { word: "Zampa", meaning: "مخلب / قدم الحيوان", example: "Il cane ha una zampa ferita.", translation: "الكلب له قدم مصابة." },
+    { word: "Zanzara", meaning: "بعوضة", example: "Una zanzara mi ha punto.", translation: "لسعتني بعوضة." },
+    { word: "Zanzariera", meaning: "ناموسية", example: "Metti la zanzariera alla finestra.", translation: "ضع الناموسية على النافذة." },
+    { word: "Zappa", meaning: "فأس زراعية / معول", example: "Il contadino usa la zappa.", translation: "الفلاح يستخدم المعول." },
+    { word: "Zappare", meaning: "يحرث / يعزق", example: "Il contadino zappa la terra.", translation: "الفلاح يحرث الأرض." },
+    { word: "Zebra", meaning: "حمار وحشي", example: "La zebra ha le strisce bianche e nere.", translation: "الحمار الوحشي له خطوط بيضاء وسوداء." },
+    { word: "Zelante", meaning: "مجتهد / غيور", example: "È uno studente molto zelante.", translation: "إنه طالب مجتهد جدًا." },
+    { word: "Zelo", meaning: "حماس / غيرة", example: "Lavora con molto zelo.", translation: "يعمل بحماس كبير." },
+    { word: "Zenzero", meaning: "زنجبيل", example: "Bevo il tè con lo zenzero.", translation: "أشرب الشاي مع الزنجبيل." },
+    { word: "Zero", meaning: "صفر", example: "Fa zero gradi oggi.", translation: "درجة الحرارة صفر اليوم." },
+    { word: "Zia", meaning: "عمة / خالة", example: "Mia zia abita a Napoli.", translation: "عمتي تسكن في نابولي." },
+    { word: "Zigomo", meaning: "عظم الوجنة", example: "Si è fatto male allo zigomo.", translation: "أصيب في عظمة وجنته." },
+    { word: "Zio", meaning: "عم / خال", example: "Mio zio è medico.", translation: "عمي طبيب." },
+    { word: "Zitella", meaning: "امرأة عزباء", example: "Lei è una zitella felice.", translation: "هي امرأة عزباء سعيدة." },
+    { word: "Zitto", meaning: "صامت", example: "Stai zitto, per favore!", translation: "اصمت من فضلك!" },
+    { word: "Zona", meaning: "منطقة", example: "Questa zona è molto tranquilla.", translation: "هذه المنطقة هادئة جدًا." },
+    { word: "Zucchero", meaning: "سكر", example: "Vuoi lo zucchero nel caffè?", translation: "هل تريد سكرًا في القهوة؟" },
+    { word: "Zucchina", meaning: "كوسة", example: "Cuocio le zucchine al forno.", translation: "أطبخ الكوسة في الفرن." },
+    { word: "Zuppa", meaning: "حساء / شوربة", example: "La zuppa è ancora calda.", translation: "الحساء ما زال ساخنًا." }
+            ];
+
+            const container = document.getElementById('word-container');
+            const searchInput = document.getElementById('search');
+            const emptyMsg = document.getElementById('empty');
+            const tabAll = document.getElementById('tab-all');
+            const tabSaved = document.getElementById('tab-saved');
+            const startBtn = document.getElementById('start-quiz');
+            const STORAGE_KEY = 'italian-saved-words';
+
+            let saved = new Set();
+            try {
+                saved = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY)) || []);
+            } catch (e) {}
+
+            function persist() {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify([...saved]));
+                } catch (e) {}
+            }
+
+            function speak(text) {
+                if (!('speechSynthesis' in window)) {
+                    alert('خاصية النطق غير مدعومة في هذا المتصفح.');
+                    return;
+                }
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'it-IT';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+
+            const normalize = s => s ? s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f\u064b-\u065f]/g, '') : '';
+
+            function el(tag, className, text) {
+                const e = document.createElement(tag);
+                if (className) e.className = className;
+                if (text !== undefined) e.textContent = text;
+                return e;
+            }
+
+            // ---------- نوع الكلمة وتصريف الفعل ----------
+            const POS_LEX = {
+                'صفة': `Alto Altro Americano Antico Aperto Azzurro Basso Bello Bianco Blu Bravo Breve Bruno Brutto Buono Calmo Caldo Caro Cattivo Difficile Divertente Dolce Economico Elegante Enorme Esatto Facile Famoso Felice Freddo Generale Gentile Giallo Giovane Giusto Grande Grave Grigio Importante Incredibile Interessante Inutile Italiano Lento Libero Lungo Migliore Nazionale Necessario Nero Nuovo Ottimo Piccolo Quarto Quinto Quotidiano Rapido Reale Rosa Rosso Rotto Secondo Semplice Sicuro Triste Ufficiale Uguale Ultimo Umido Unico Urgente Utile Veloce Vero Vicino Lontano Zelante Zitto Nostro Tuo Alcuni Qualche Ogni Quale Quanto Tanto Tutto`,
+                'ظرف': `Adesso Allora Anche Ancora Appena Davanti Domani Dove Ecco Forse Ieri Indietro Insieme Normalmente Oggi Ora Piano Prima Quando Quasi Qui Sempre Solo Tardi Troppo Ultimamente Come Meno`,
+                'ضمير': `Loro Nessuno Niente Qualcosa Qualcuno Quello Questo`,
+                'عدد': `Nove Otto Quaranta Quattro Quindici Tre Zero`,
+                'حرف': `E Oltre Quindi`,
+                'عبارة': `Buonasera Buongiorno Ciao Grazie`,
+                'فعل': `Basta Bisogna`
+            };
+            const POS_MAP = {};
+            Object.entries(POS_LEX).forEach(([label, s]) =>
+                s.split(/\s+/).forEach(w => { POS_MAP[w.toLowerCase()] = label; }));
+
+            function posOf(item) {
+                const lw = item.word.toLowerCase();
+                if (POS_MAP[lw]) return POS_MAP[lw];
+                if (/(are|ere|ire|rre)$/.test(lw) && /^ي/.test(item.meaning)) return 'فعل';
+                return 'اسم';
+            }
+
+            const IRR = {
+                essere: ['sono', 'sei', 'è', 'siamo', 'siete', 'sono'],
+                avere: ['ho', 'hai', 'ha', 'abbiamo', 'avete', 'hanno'],
+                andare: ['vado', 'vai', 'va', 'andiamo', 'andate', 'vanno'],
+                fare: ['faccio', 'fai', 'fa', 'facciamo', 'fate', 'fanno'],
+                dire: ['dico', 'dici', 'dice', 'diciamo', 'dite', 'dicono'],
+                ridire: ['ridico', 'ridici', 'ridice', 'ridiciamo', 'ridite', 'ridicono'],
+                dare: ['do', 'dai', 'dà', 'diamo', 'date', 'danno'],
+                venire: ['vengo', 'vieni', 'viene', 'veniamo', 'venite', 'vengono'],
+                potere: ['posso', 'puoi', 'può', 'possiamo', 'potete', 'possono'],
+                volere: ['voglio', 'vuoi', 'vuole', 'vogliamo', 'volete', 'vogliono'],
+                dovere: ['devo', 'devi', 'deve', 'dobbiamo', 'dovete', 'devono'],
+                sapere: ['so', 'sai', 'sa', 'sappiamo', 'sapete', 'sanno'],
+                uscire: ['esco', 'esci', 'esce', 'usciamo', 'uscite', 'escono'],
+                riuscire: ['riesco', 'riesci', 'riesce', 'riusciamo', 'riuscite', 'riescono'],
+                bere: ['bevo', 'bevi', 'beve', 'beviamo', 'bevete', 'bevono'],
+                tenere: ['tengo', 'tieni', 'tiene', 'teniamo', 'tenete', 'tengono'],
+                tradurre: ['traduco', 'traduci', 'traduce', 'traduciamo', 'traducete', 'traducono'],
+                salire: ['salgo', 'sali', 'sale', 'saliamo', 'salite', 'salgono'],
+                scegliere: ['scelgo', 'scegli', 'sceglie', 'scegliamo', 'scegliete', 'scelgono'],
+                piacere: ['piaccio', 'piaci', 'piace', 'piacciamo', 'piacete', 'piacciono']
+            };
+            const ISC = new Set(['capire', 'finire', 'unire']);
+
+            function conjugate(inf) {
+                const w = inf.toLowerCase();
+                if (IRR[w]) return IRR[w];
+                const stem = w.slice(0, -3), end = w.slice(-3);
+                if (end === 'are') {
+                    const h = /[cg]$/.test(stem) ? 'h' : '';
+                    const i = /i$/.test(stem);
+                    return [stem + 'o', i ? stem : stem + h + 'i', stem + 'a',
+                            i ? stem + 'amo' : stem + h + 'iamo', stem + 'ate', stem + 'ano'];
+                }
+                if (end === 'ere') {
+                    return [stem + 'o', stem + 'i', stem + 'e', stem + 'iamo', stem + 'ete', stem + 'ono'];
+                }
+                if (end === 'ire') {
+                    const s = ISC.has(w);
+                    return [stem + (s ? 'isco' : 'o'), stem + (s ? 'isci' : 'i'), stem + (s ? 'isce' : 'e'),
+                            stem + 'iamo', stem + 'ite', stem + (s ? 'iscono' : 'ono')];
+                }
+                return null;
+            }
+
+            const PRONOUNS = ['io', 'tu', 'lui/lei', 'noi', 'voi', 'loro'];
+
+            function buildConj(forms) {
+                const box = el('span', 'conj');
+                box.appendChild(el('span', 'conj-title', 'تصريف المضارع (Presente)'));
+                const grid = el('span', 'conj-grid');
+                forms.forEach((f, i) => {
+                    const cell = el('span', 'conj-cell');
+                    cell.appendChild(el('small', '', PRONOUNS[i]));
+                    const b = el('b', '', f);
+                    b.lang = 'it';
+                    cell.appendChild(b);
+                    grid.appendChild(cell);
+                });
+                box.appendChild(grid);
+                return box;
+            }
+
+            const words = [...italianWords].sort((a, b) => a.word.localeCompare(b.word, 'it'));
+            const entries = [];
+            let currentLetter = '';
+            let currentTitle = null;
+
+            words.forEach(item => {
+                const letter = item.word[0].toUpperCase();
+
+                if (letter !== currentLetter) {
+                    currentLetter = letter;
+                    currentTitle = el('h2', 'group-title', letter);
+                    container.appendChild(currentTitle);
+                }
+
+                const card = el('div', 'card');
+
+                const reveal = el('button', 'reveal');
+                reveal.type = 'button';
+                reveal.setAttribute('aria-expanded', 'false');
+
+                const wordRow = el('div', 'word-row');
+                const wordEl = el('span', 'word', item.word);
+                wordEl.lang = 'it';
+                const pos = posOf(item);
+                const posTag = el('span', pos === 'فعل' ? 'pos verb' : 'pos', pos);
+                const wordMain = el('span', 'word-main');
+                wordMain.append(wordEl, posTag);
+                wordRow.appendChild(wordMain);
+
+                const meaning = el('span', 'meaning');
+                const meaningText = el('span', '', item.meaning);
+                
+                if (item.example) {
+                    const ex = el('span', 'ex', item.example);
+                    ex.lang = 'it';
+                    
+                    const exSpeakBtn = el('button', 'btn-icon', '🔊');
+                    exSpeakBtn.type = 'button';
+                    exSpeakBtn.title = 'نطق المثال';
+                    exSpeakBtn.addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        speak(item.example);
+                    });
+                    ex.appendChild(exSpeakBtn);
+
+                    const tr = el('span', 'ex-tr', item.translation || '');
+                    meaningText.append(ex, tr);
+                }
+                if (pos === 'فعل') {
+                    const forms = conjugate(item.word);
+                    if (forms) meaningText.appendChild(buildConj(forms));
+                }
+                meaning.appendChild(meaningText);
+
+                reveal.append(wordRow, meaning);
+
+                const actions = el('div', 'actions');
+                
+                const speakBtn = el('button', 'btn-icon', '🔊');
+                speakBtn.type = 'button';
+                speakBtn.title = 'نطق الكلمة';
+                speakBtn.addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    speak(item.word);
+                });
+
+                const save = el('button', 'save');
+                save.type = 'button';
+
+                actions.append(speakBtn, save);
+                card.append(reveal, actions);
+                container.appendChild(card);
+
+                reveal.addEventListener('click', () => {
+                    const open = card.classList.toggle('open');
+                    reveal.setAttribute('aria-expanded', String(open));
+                });
+
+                save.addEventListener('click', () => {
+                    if (saved.has(item.word)) saved.delete(item.word);
+                    else saved.add(item.word);
+                    persist();
+                    paintSave(entry);
+                    applyFilters();
+                });
+
+                const entry = {
+                    item, card, save, title: currentTitle, letter, pos,
+                    haystack: normalize(item.word + ' ' + item.meaning)
+                };
+                entries.push(entry);
+                paintSave(entry);
+            });
+
+            function paintSave(entry) {
+                const isSaved = saved.has(entry.item.word);
+                entry.save.setAttribute('aria-pressed', String(isSaved));
+                entry.save.textContent = isSaved ? '★ محفوظة' : '☆ حفظ';
+            }
+
+            let showSaved = false;
+            const selLetters = new Set(), selPos = new Set();
+
+            function applyFilters() {
+                const q = normalize(searchInput.value.trim());
+                const visibleTitles = new Set();
+                let visible = 0;
+
+                entries.forEach(e => {
+                    const show = (!showSaved || saved.has(e.item.word)) &&
+                                 (!selLetters.size || selLetters.has(e.letter)) &&
+                                 (!selPos.size || selPos.has(e.pos)) &&
+                                 (!q || e.haystack.includes(q));
+                    e.card.hidden = !show;
+                    if (show) { visible++; visibleTitles.add(e.title); }
+                });
+
+                container.querySelectorAll('.group-title').forEach(t => {
+                    t.hidden = !visibleTitles.has(t);
+                });
+
+                tabAll.textContent = `كل الكلمات (${entries.length})`;
+                tabSaved.textContent = `المحفوظات (${saved.size})`;
+
+                startBtn.hidden = !(showSaved && saved.size > 0);
+                fcountEl.textContent = `${visible} كلمة`;
+                const nf = selLetters.size + selPos.size;
+                filterToggle.textContent = nf ? `تصفية (${nf})` : 'تصفية';
+                emptyMsg.hidden = visible > 0;
+                if (visible === 0) {
+                    emptyMsg.textContent = showSaved && !q
+                        ? 'لا توجد كلمات محفوظة بعد. اضغط «حفظ» بجانب أي كلمة.'
+                        : 'لا توجد نتائج مطابقة.';
+                }
+            }
+
+            function setTab(savedOnly) {
+                showSaved = savedOnly;
+                tabAll.setAttribute('aria-pressed', String(!savedOnly));
+                tabSaved.setAttribute('aria-pressed', String(savedOnly));
+                applyFilters();
+            }
+
+            // ---------- التصفية ----------
+            let quizOn = false, mode = 'words', filterOpen = false;
+            const fpanel = document.getElementById('fpanel');
+            const fcountEl = document.getElementById('fcount');
+            const filterToggle = document.getElementById('filter-toggle');
+            const syncPanel = () => { fpanel.hidden = !(filterOpen && mode === 'words' && !quizOn); };
+
+            function buildChips(boxId, values, set, label) {
+                const box = document.getElementById(boxId);
+                values.forEach(v => {
+                    const b = el('button', 'chip', label(v));
+                    b.type = 'button';
+                    b.setAttribute('aria-pressed', 'false');
+                    b.addEventListener('click', () => {
+                        set.has(v) ? set.delete(v) : set.add(v);
+                        b.setAttribute('aria-pressed', String(set.has(v)));
+                        applyFilters();
+                    });
+                    box.appendChild(b);
+                });
+            }
+            const POS_ORDER = ['اسم', 'صفة', 'فعل', 'ظرف', 'ضمير', 'عدد', 'حرف', 'عبارة'];
+            buildChips('f-letters', [...new Set(entries.map(e => e.letter))], selLetters, v => v);
+            buildChips('f-pos', POS_ORDER, selPos, v => `${v} (${entries.filter(e => e.pos === v).length})`);
+
+            filterToggle.addEventListener('click', () => {
+                filterOpen = !filterOpen;
+                filterToggle.setAttribute('aria-expanded', String(filterOpen));
+                syncPanel();
+            });
+            document.getElementById('fclear').addEventListener('click', () => {
+                selLetters.clear(); selPos.clear();
+                fpanel.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', 'false'));
+                applyFilters();
+            });
+
+            // ---------- القصص ----------
+            const TOPICS = [['me', 'تعريف عن النفس'], ['family', 'العائلة'], ['friend', 'صديقك'], ['house', 'وصف البيت'],
+                            ['cinema', 'السينما'], ['space', 'الفضاء'], ['travel', 'السفر'], ['tech', 'التكنولوجيا']];
+            const LEVELS = [['A1', 'مبتدئ'], ['A2', 'أساسي'], ['B1', 'متوسط'], ['B2', 'فوق المتوسط'], ['C1', 'متقدم'], ['C2', 'إتقان']];
+            // كل قصة: [العنوان بالإيطالي، العنوان بالعربي، [[جملة، ترجمة]...]، [[كلمة، معنى]...]]
+            const STORIES = {
+                me: {
+                    A1: ["Mi presento", "أُعرّف بنفسي", [["Mi chiamo Sara. Ho venti anni.", "اسمي سارة. عمري عشرون سنة."], ["Sono egiziana e abito al Cairo.", "أنا مصرية وأسكن في القاهرة."], ["Studio medicina e mi piace leggere.", "أدرس الطب وأحب القراءة."]], [["Mi chiamo", "اسمي"], ["Abito", "أسكن"], ["Studio", "أدرس"], ["Mi piace", "يعجبني / أحب"]]],
+                    A2: ["Una giornata normale", "يوم عادي", [["Mi sveglio alle sette e faccio colazione con un caffè.", "أستيقظ في السابعة وأتناول الفطور مع قهوة."], ["Poi vado all'università in autobus, perché non ho la macchina.", "ثم أذهب إلى الجامعة بالحافلة لأنه ليس لدي سيارة."], ["La sera preferisco restare a casa e guardare un film.", "في المساء أفضّل البقاء في البيت ومشاهدة فيلم."]], [["Mi sveglio", "أستيقظ"], ["Preferisco", "أفضّل"], ["Perché", "لأن / لماذا"], ["La sera", "في المساء"]]],
+                    B1: ["Passioni e progetti", "شغفي ومشاريعي", [["Da bambina sognavo di fare la dottoressa, e oggi sto realizzando quel sogno.", "عندما كنت طفلة كنت أحلم بأن أصبح طبيبة، واليوم أحقق هذا الحلم."], ["Se avrò tempo il prossimo anno, imparerò anche il francese.", "إذا توفر لي وقت العام القادم فسأتعلم الفرنسية أيضًا."]], [["Sognavo", "كنت أحلم"], ["Realizzare", "يحقق"], ["Il prossimo anno", "العام القادم"], ["Imparerò", "سأتعلم"]]],
+                    B2: ["Chi sono davvero", "من أنا حقًا", [["Credo che le esperienze ci definiscano più dei titoli di studio.", "أعتقد أن التجارب تحدّدنا أكثر من الشهادات الدراسية."], ["Se avessi avuto più coraggio, avrei lasciato la mia città già da anni.", "لو كانت لدي شجاعة أكبر لكنت تركت مدينتي منذ سنوات."], ["Tuttavia, non rimpiango nulla: ogni scelta mi ha insegnato qualcosa.", "ومع ذلك لا أندم على شيء: كل اختيار علّمني شيئًا."]], [["Credo che", "أعتقد أن"], ["Definire", "يحدّد"], ["Tuttavia", "ومع ذلك"], ["Rimpiangere", "يندم على"]]],
+                    C1: ["Identità e appartenenza", "الهوية والانتماء", [["Pur essendo cresciuta tra due culture, non mi sento mai del tutto estranea in nessuna delle due.", "رغم أنني نشأت بين ثقافتين فلا أشعر بأنني غريبة تمامًا في أي منهما."], ["Ciò che mi definisce non è tanto il luogo d'origine quanto il modo in cui rielaboro ciò che ho vissuto.", "ما يحدّدني ليس مكان الأصل بقدر الطريقة التي أعيد بها صياغة ما عشته."]], [["Pur essendo", "رغم كوني"], ["Estranea", "غريبة"], ["Rielaborare", "يعيد صياغة / يعالج"], ["Appartenenza", "انتماء"]]],
+                    C2: ["Il racconto di sé", "سرد الذات", [["Raccontarsi significa, in fondo, scegliere quali frammenti della propria esistenza meritino di sopravvivere alla memoria.", "أن يروي المرء نفسه يعني في الجوهر أن يختار أي شظايا من وجوده تستحق أن تنجو من الذاكرة."], ["Ed è proprio in questa selezione, inevitabilmente arbitraria, che si cela ciò che chiamiamo identità.", "وفي هذا الانتقاء بالذات، الذي لا مفر من أن يكون تعسفيًا، يكمن ما نسميه الهوية."]], [["In fondo", "في الجوهر"], ["Frammento", "شظية"], ["Arbitrario", "تعسفي"], ["Celarsi", "يكمن / يختبئ"]]]
+                },
+                family: { A1: ["La mia famiglia", "عائلتي", [["Nella mia famiglia siamo in cinque.", "في عائلتي نحن خمسة."], ["Mio padre è medico e mia madre è insegnante.", "أبي طبيب وأمي معلمة."], ["Ho un fratello e una sorella.", "لدي أخ وأخت."]], [["Famiglia", "عائلة"], ["Padre", "أب"], ["Madre", "أم"], ["Sorella", "أخت"]]] },
+                friend: { A1: ["Il mio amico Luca", "صديقي لوكا", [["Luca è il mio migliore amico.", "لوكا هو أفضل أصدقائي."], ["È alto, simpatico e molto divertente.", "هو طويل ولطيف ومرح جدًا."], ["Giochiamo a calcio ogni sabato.", "نلعب كرة القدم كل سبت."]], [["Amico", "صديق"], ["Simpatico", "لطيف / ظريف"], ["Divertente", "ممتع"], ["Sabato", "السبت"]]] },
+                house: { A1: ["La mia casa", "بيتي", [["La mia casa è piccola ma bella.", "بيتي صغير لكنه جميل."], ["Ha due camere, una cucina e un bagno.", "فيه غرفتان ومطبخ وحمّام."], ["Il balcone ha una vista sul mare.", "الشرفة تطل على البحر."]], [["Camera", "غرفة"], ["Cucina", "مطبخ"], ["Bagno", "حمّام"], ["Balcone", "شرفة"]]] },
+                cinema: { A1: ["Al cinema", "في السينما", [["Stasera vado al cinema con gli amici.", "الليلة أذهب إلى السينما مع الأصدقاء."], ["Il film comincia alle otto.", "يبدأ الفيلم في الثامنة."], ["Compriamo i biglietti e i popcorn.", "نشتري التذاكر والفشار."]], [["Film", "فيلم"], ["Biglietto", "تذكرة"], ["Stasera", "الليلة"], ["Comprare", "يشتري"]]] },
+                space: { A1: ["Lo spazio", "الفضاء", [["La luna è vicina alla Terra.", "القمر قريب من الأرض."], ["Il sole è una grande stella.", "الشمس نجمة كبيرة."], ["Di notte guardo le stelle dal balcone.", "في الليل أنظر إلى النجوم من الشرفة."]], [["Luna", "قمر"], ["Terra", "أرض"], ["Stella", "نجمة"], ["Sole", "شمس"]]] },
+                travel: { A1: ["Un viaggio a Roma", "رحلة إلى روما", [["Domani parto per Roma in treno.", "غدًا أسافر إلى روما بالقطار."], ["Prenoto un albergo in centro.", "أحجز فندقًا في وسط المدينة."], ["Voglio visitare il Colosseo.", "أريد زيارة الكولوسيوم."]], [["Partire", "يغادر"], ["Treno", "قطار"], ["Albergo", "فندق"], ["Visitare", "يزور"]]] },
+                tech: { A1: ["Il mio telefono", "هاتفي", [["Uso il telefono ogni giorno.", "أستخدم الهاتف كل يوم."], ["Mando messaggi e guardo video su internet.", "أرسل رسائل وأشاهد فيديوهات على الإنترنت."], ["La batteria finisce presto!", "البطارية تنتهي بسرعة!"]], [["Telefono", "هاتف"], ["Messaggio", "رسالة"], ["Batteria", "بطارية"], ["Internet", "الإنترنت"]]] }
+            };
+
+            const storiesEl = document.getElementById('stories');
+            const modeWords = document.getElementById('mode-words');
+            const modeStories = document.getElementById('mode-stories');
+            let curTopic = 'me', curLevel = 'A1';
+
+            function chipRow(items, isOn, onPick, extra) {
+                const row = el('div', 'chips');
+                items.forEach(([id, label]) => {
+                    const b = el('button', 'chip' + (extra && extra(id) ? ' off' : ''), label);
+                    b.type = 'button';
+                    b.setAttribute('aria-pressed', String(isOn(id)));
+                    b.addEventListener('click', () => onPick(id));
+                    row.appendChild(b);
+                });
+                return row;
+            }
+
+            function renderStories() {
+                storiesEl.replaceChildren();
+                storiesEl.appendChild(el('span', 'fl', 'الموضوع'));
+                storiesEl.appendChild(chipRow(TOPICS, id => id === curTopic, id => { curTopic = id; renderStories(); }));
+                storiesEl.appendChild(el('span', 'fl', 'المستوى'));
+                storiesEl.appendChild(chipRow(LEVELS.map(([l]) => [l, l]), id => id === curLevel,
+                    id => { curLevel = id; renderStories(); }, id => !(STORIES[curTopic] && STORIES[curTopic][id])));
+                storiesEl.appendChild(el('p', 'lvl-note', LEVELS.find(l => l[0] === curLevel)[1]));
+
+                const s = STORIES[curTopic] && STORIES[curTopic][curLevel];
+                if (!s) {
+                    storiesEl.appendChild(el('p', 'empty', `لا توجد قصة في هذا الموضوع بمستوى ${curLevel} بعد. جرّب مستوى غير باهت.`));
+                    return;
+                }
+                const card = el('article', 'story');
+                const title = el('h2', '', s[0]); title.lang = 'it';
+                card.append(title, el('p', 't-ar', s[1]));
+                s[2].forEach(([it, ar]) => {
+                    const box = el('div', 'sp');
+                    const p = el('p', 's-it', it); p.lang = 'it';
+                    if (typeof speak === 'function') {
+                        const sp = el('button', 'btn-icon', '🔊');
+                        sp.type = 'button'; sp.title = 'نطق';
+                        sp.addEventListener('click', () => speak(it));
+                        p.append(' ', sp);
+                    }
+                    box.append(p, el('p', 's-ar', ar));
+                    card.appendChild(box);
+                });
+                card.appendChild(el('h3', '', 'الكلمات المهمة'));
+                const grid = el('div', 'vgrid');
+                s[3].forEach(([w, m]) => {
+                    const v = el('div', 'vw'); const b = el('b', '', w); b.lang = 'it';
+                    v.append(b, el('span', '', m)); grid.appendChild(v);
+                });
+                card.appendChild(grid);
+                storiesEl.appendChild(card);
+            }
+
+            function setMode(m) {
+                mode = m;
+                const w = m === 'words';
+                modeWords.setAttribute('aria-pressed', String(w));
+                modeStories.setAttribute('aria-pressed', String(!w));
+                searchInput.hidden = !w; tabsEl.hidden = !w; container.hidden = !w; storiesEl.hidden = w;
+                syncPanel();
+                if (w) applyFilters(); else { emptyMsg.hidden = true; renderStories(); }
+                window.scrollTo(0, 0);
+            }
+            modeWords.addEventListener('click', () => setMode('words'));
+            modeStories.addEventListener('click', () => setMode('stories'));
+
+            const quizEl = document.getElementById('quiz');
+            const tabsEl = document.querySelector('.tabs');
+            let quiz = null;
+
+            function shuffle(arr) {
+                const r = [...arr];
+                for (let i = r.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [r[i], r[j]] = [r[j], r[i]];
+                }
+                return r;
+            }
+
+            const meaningParts = m => m.split('/').map(s => normalize(s.trim()));
+
+            function makeQuestion(item) {
+                const used = new Set(meaningParts(item.meaning));
+                const wrong = [];
+                for (const o of shuffle(words)) {
+                    if (o.word === item.word) continue;
+                    const parts = meaningParts(o.meaning);
+                    if (parts.some(p => used.has(p))) continue;
+                    wrong.push(o.meaning);
+                    parts.forEach(p => used.add(p));
+                    if (wrong.length === 3) break;
+                }
+                return {
+                    word: item.word,
+                    correct: item.meaning,
+                    options: shuffle([item.meaning, ...wrong])
+                };
+            }
+
+            function setQuizMode(on) {
+                container.hidden = on;
+                searchInput.hidden = on;
+                tabsEl.hidden = on;
+                quizOn = on; syncPanel();
+                quizEl.hidden = !on;
+                if (on) emptyMsg.hidden = true;
+                else applyFilters();
+                window.scrollTo(0, 0);
+            }
+
+            function startQuiz(items) {
+                quiz = {
+                    items,
+                    questions: shuffle(items).map(makeQuestion),
+                    index: 0,
+                    score: 0,
+                    mistakes: []
+                };
+                setQuizMode(true);
+                renderQuestion();
+            }
+
+            function renderQuestion() {
+                const q = quiz.questions[quiz.index];
+                const total = quiz.questions.length;
+                quizEl.replaceChildren();
+
+                const meta = el('div', 'quiz-meta');
+                meta.appendChild(el('span', '', `سؤال ${quiz.index + 1} من ${total}`));
+                const exit = el('button', 'quiz-exit', 'إنهاء');
+                exit.type = 'button';
+                exit.addEventListener('click', () => setQuizMode(false));
+                meta.appendChild(exit);
+
+                const bar = el('div', 'bar');
+                const fill = document.createElement('i');
+                fill.style.width = (quiz.index / total * 100) + '%';
+                bar.appendChild(fill);
+
+                const wordWrap = el('div', 'q-word-wrap');
+                const wordEl = el('div', 'q-word', q.word);
+                wordEl.lang = 'it';
+                
+                const speakBtn = el('button', 'btn-icon', '🔊');
+                speakBtn.type = 'button';
+                speakBtn.title = 'نطق الكلمة';
+                speakBtn.addEventListener('click', () => speak(q.word));
+
+                wordWrap.append(wordEl, speakBtn);
+
+                const hint = el('p', 'q-hint', 'ما معنى هذه الكلمة؟');
+                const feedback = el('p', 'feedback');
+                const nextRow = el('div', 'next-row');
+                const options = el('div', 'options');
+
+                q.options.forEach(text => {
+                    const b = el('button', 'opt', text);
+                    b.type = 'button';
+                    b.addEventListener('click', () => {
+                        const ok = text === q.correct;
+                        options.querySelectorAll('.opt').forEach(o => {
+                            o.disabled = true;
+                            if (o.textContent === q.correct) o.classList.add('right');
+                        });
+                        if (ok) {
+                            quiz.score++;
+                            feedback.textContent = 'إجابة صحيحة ✓';
+                        } else {
+                            b.classList.add('wrong');
+                            feedback.textContent = 'إجابة خاطئة';
+                            quiz.mistakes.push({ word: q.word, correct: q.correct, chosen: text });
+                        }
+                        const last = quiz.index === total - 1;
+                        const next = el('button', 'btn-primary', last ? 'عرض النتيجة' : 'السؤال التالي');
+                        next.type = 'button';
+                        next.addEventListener('click', () => {
+                            quiz.index++;
+                            last ? renderResult() : renderQuestion();
+                        });
+                        nextRow.appendChild(next);
+                        next.focus();
+                    });
+                    options.appendChild(b);
+                });
+
+                quizEl.append(meta, bar, wordWrap, hint, options, feedback, nextRow);
+            }
+
+            function renderResult() {
+                const total = quiz.questions.length;
+                const pct = Math.round(quiz.score / total * 100);
+                quizEl.replaceChildren();
+
+                const box = el('div', 'result');
+                box.appendChild(el('p', 'score-big', `${quiz.score} / ${total}`));
+                box.appendChild(el('p', 'score-sub', `النسبة ${pct}%`));
+                box.appendChild(el('p', 'score-msg',
+                    pct === 100 ? 'ممتاز! كل الإجابات صحيحة'
+                    : pct >= 70 ? 'نتيجة جيدة، كمّل'
+                    : pct >= 40 ? 'مقبول، راجع الكلمات الخاطئة'
+                    : 'محتاج مراجعة أكتر، جرّب مرة ثانية'));
+
+                const actions = el('div', 'result-actions');
+                const again = el('button', 'btn-primary', 'إعادة الاختبار');
+                again.type = 'button';
+                again.addEventListener('click', () => startQuiz(quiz.items));
+                actions.appendChild(again);
+
+                if (quiz.mistakes.length) {
+                    const retry = el('button', 'btn-ghost', 'اختبار الأخطاء فقط');
+                    retry.type = 'button';
+                    retry.addEventListener('click', () => {
+                        const wrongWords = new Set(quiz.mistakes.map(m => m.word));
+                        startQuiz(quiz.items.filter(i => wrongWords.has(i.word)));
+                    });
+                    actions.appendChild(retry);
+                }
+
+                const back = el('button', 'btn-ghost', 'رجوع للمحفوظات');
+                back.type = 'button';
+                back.addEventListener('click', () => setQuizMode(false));
+                actions.appendChild(back);
+                box.appendChild(actions);
+                quizEl.appendChild(box);
+
+                if (quiz.mistakes.length) {
+                    const list = el('div', 'mistakes');
+                    list.appendChild(el('h3', '', 'الكلمات التي أخطأت فيها'));
+                    quiz.mistakes.forEach(m => {
+                        const row = el('div', 'mistake');
+                        const w = el('div', 'w', m.word);
+                        w.lang = 'it';
+                        const ok = el('div', 'ok', 'الصحيح: ' + m.correct);
+                        const no = el('div', '');
+                        no.append('إجابتك: ', el('span', 'no', m.chosen));
+                        row.append(w, ok, no);
+                        list.appendChild(row);
+                    });
+                    quizEl.appendChild(list);
+                }
+                window.scrollTo(0, 0);
+            }
+
+            startBtn.addEventListener('click', () => {
+                const items = words.filter(w => saved.has(w.word));
+                if (items.length) startQuiz(items);
+            });
+
+            tabAll.addEventListener('click', () => setTab(false));
+            tabSaved.addEventListener('click', () => setTab(true));
+            searchInput.addEventListener('input', applyFilters);
+
+            applyFilters();
+        });
+    </script>
+</body>
+
+</html>
